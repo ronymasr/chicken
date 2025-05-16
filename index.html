@@ -1,117 +1,168 @@
 <!-- بداية الكود -->
 <!DOCTYPE html>
 <html lang="en">
- 
-<head>
-    <title>chicken ranch</title>
 
+<head>
+    <title>Chicken Ranch</title>
     <meta name="description" content="About the restaurant">
     <meta name="Developer" content="Ahmed Ramadan">
-    <meta name="kaywords" content="restaurant,Fried chicken">
+    <meta name="keywords" content="restaurant,Fried chicken">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link
-        href="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/413894034_809647947842216_5543911497635866413_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=T77R5QvoEPMQ7kNvwFNnSnR&_nc_oc=AdkZdceqhDZHXb61mXiszDC27yHbR-A0GG8Uin6j9LoX_UR7lpxr-s9mZbNDIV_np9w&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=BfdWQtgooeR6WsfDSSarog&oh=00_AfF-JE9FLjTuPQpMV5iT4xuwr5bl_gXsqm4fuSuz6AYNUg&oe=681D970B"
-        type="image/x-icon" rel="icon">
+    <link rel="icon" href="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/413894034_809647947842216_5543911497635866413_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=T77R5QvoEPMQ7kNvwFNnSnR&_nc_oc=AdkZdceqhDZHXb61mXiszDC27yHbR-A0GG8Uin6j9LoX_UR7lpxr-s9mZbNDIV_np9w&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=BfdWQtgooeR6WsfDSSarog&oh=00_AfF-JE9FLjTuPQpMV5iT4xuwr5bl_gXsqm4fuSuz6AYNUg&oe=681D970B" type="image/x-icon">
+<!-- ...existing code... -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #7b112c 0%, #fff0f3 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #2d1a1a;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            background: #fff8fa;
+            border-radius: 22px;
+            box-shadow: 0 6px 32px #7b112c33;
+            padding: 36px 28px;
+            border: 2px solid #b9314f22;
+        }
+        h1 {
+            color: #7b112c;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-size: 2.7rem;
+            font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
+        }
+        h1::before {
+            content: "🍗 ";
+        }
+        h1::after {
+            content: " 🍟";
+        }
+        h2 {
+            color: #b9314f;
+            margin-top: 32px;
+            font-size: 1.5rem;
+            border-left: 6px solid #7b112c;
+            padding-left: 10px;
+            background: #fff0f3;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        h3 {
+            color: #7b112c;
+            margin-bottom: 4px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        li {
+            font-weight: bold;
+            color: #b9314f;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+        a {
+            color: #7b112c;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #b9314f;
+            text-decoration: underline;
+        }
+        img {
+            border-radius: 16px;
+            margin: 8px 8px 18px 0;
+            box-shadow: 0 2px 12px #7b112c22;
+            border: 2px solid #fff0f3;
+            background: #fff0f3;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #b9314f;
+            margin: 24px 0;
+        }
+        h6 {
+            text-align: center;
+            color: #888;
+            margin-top: 40px;
+        }
+        /* أيقونات للأقسام */
+        .icon {
+            font-size: 1.2em;
+            margin-right: 6px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px 2vw;
+            }
+            img {
+                width: 95% !important;
+                margin: 8px 0;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+<!-- ...existing code... -->
 </head>
 
-<body bgcolor="ff0000" >
-    <hr>
-    <!-- اضافة صورة للموقع -->
-    <img src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/434093627_878501077623569_9082809152095648231_n.png?_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=1QMYdSzfleMQ7kNvwFS0Ksw&_nc_oc=AdnkP_GiN6Z8gS6WRR_VFDRHE9r31ga6r4KEd-1b9SO_IUsZZ6j9q3ougeNSFpPbuJc&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=o-KZAXvTNUe-J4L38jzuVg&oh=00_AfH10SOATEJuQa-3WAElfcsVs9QXHKMDcfzcflL82ZPZqQ&oe=681D76BB"
-        width="350"> <br>
-    <img src="https://scontent.fcai19-2.fna.fbcdn.net/v/t51.75761-15/491445619_17903386545119504_977296650399559188_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=mr1ZU6cCtagQ7kNvwESGWMM&_nc_oc=AdnRiJP67lgUmnXadkXXaCapwMYk0cTFLzaBpHlNJfNiy7OXXvDV_yPz53hkRHlfzB4&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=gNoTp1vw_N-0hj6X7Ys-pw&oh=00_AfE1KYVk73m2ry4ndxxk3oLl3rl6NQ5sbgkT3edIdhXjqQ&oe=681D9435"
-        width="350"> <br>
-    <img src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/494039910_1169630401843967_8765505607506402736_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=G0GUqcucyO4Q7kNvwE0zXB_&_nc_oc=AdkavXn_U8ackzjvZLzBdyGLNgBBfnWEtVj2CqDK4vk7ztRpnhHShgbZ8G71-xhcTME&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=IC8oKLx1BGGm4-ucUMQWAg&oh=00_AfH9toW6HZntm539BWj07lNK6mdic5l5Ezs-bpY_9J_LgA&oe=681D77E6"
-        width="350"> <br>
-    <img src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/495188688_1169630371843970_909718641186209204_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=JHjpyRFuGcUQ7kNvwG3ETfO&_nc_oc=AdlFraXsaCGB1ut4u75lOljKY8H6FV_4aWlGBtIJrwDeTXd0UZV14bMolQCiUyBudto&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=NeKp3_YWud9yzZpxvJ3-JQ&oh=00_AfEFTSeJQ78DsxIBKhwgqIjCQLi1QE25gVbLi26Ddr_5EA&oe=681D6DC5"
-        width="350"> <br>
+<body>
+    <div class="container">
+        <img src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/434093627_878501077623569_9082809152095648231_n.png?stp=dst-png_s960x960&_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=9xJetv86M6gQ7kNvwFfxOYy&_nc_oc=Adn9_Y2ekt7q6vm2n5N72VzdQ5u3THIVrKECDVlZHnAQ5MKPY95BIMy99Xy0gbdqS9I&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=Ev9-IofuXSRVjULwCP0b3g&oh=00_AfJDd4ZbC6PBlH4kACRaSDd_L4DDNPggoBu5hKzPRl0UXg&oe=682D80FB" width="350">
+       <br>
+        <img src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/495188688_1169630371843970_909718641186209204_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=mgim9OobBxgQ7kNvwHyF_oo&_nc_oc=AdkKDvMSTPYLtJwUJdePOSIzVq5BFZJVNkOZRQqCef3rSJ4IMbFoXMMsaxUuYaBAf28&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=1reocuC0xo37xVE2Eb_6iQ&oh=00_AfJzp4msSc8SgjJPbPMJ-_cQTuk3W8wPlMr27Ax0cX1kBA&oe=682D7805" width="350">
+       <br>
+        <img src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/494039910_1169630401843967_8765505607506402736_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=chS821nIq9AQ7kNvwFeVU8F&_nc_oc=Adl8jmp2eJZoMVVd1NAytjmKBJgvQ5NrLqHTxb4b4rJI18Wgt8AXu26B2UQRh1b0ETI&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=kAGlVPFLSnzML9Mv6OX9Rg&oh=00_AfIgonB3XQ3BWa2sjnoASOHAB6Vnrzk7-dwsG9kFyW3B8A&oe=682D8226" width="350">
 
+        <h1><u>Chicken Ranch</u></h1>
+        <hr />
 
+        <h2>1- Who are we?</h2>
+        <p>We are a fast food restaurant serving fried chicken and sandwiches.</p>
 
-    <br>
-
-    <h1>
-        <!-- العنوان الرئيسي للموقع -->
-        <strong>
-            <u> Chicken Ranch </u>
-
-        </strong>
-    </h1>
-    <hr />
-
-    <h2>1- Who are we?</h2>
-
-    <p>
-    <ul>We are a fast food restaurant serving fried chicken and sandwiches.</ul>
-    </p>
-    <h2>2- Why us?</h2>
-
-    <p>
-    <ul> Because we are distinguished by the best raw materials and the best types
-        of chicken, <br />and we provide good and excellent service, and we have
-        great speed in preparing orders,<br />
-        and we do not allow any error in the order, and we care very much about
-        cleanliness<br />
-        and care to preserve the safety of the customer.</ul>
-
-    </p>
-
-    <h2>3- Our branches:</h2>
-    <ul>
-        <h3>
-            <u>
-                <li>Branch 1</li>
-            </u>
-        </h3>
-
-        <p>-El Mohandseen, Ahmed Oraby.st</p>
-        <p> <a href="https://maps.app.goo.gl/8K6XMKz2jmTpvsRT9" target="_blank"> google maps </a> </p>
-        <h3>
-            <u>
-                <li>Branch 2</li>
-            </u>
-        </h3>
-
-        <p>-Golden Walk Strip, Waslet Dahshur Rd, Second Al Sheikh Zayed</p>
-        <p> <a href="https://maps.app.goo.gl/c7iVngVosDxzPxvZ7" target="_blank"> google maps </a> </p>
-
-
-        <h3>
-            <u>
-                <li>Branch 3</li>
-            </u>
-        </h3>
-
+        <h2>2- Why us?</h2>
         <p>
-            -Chilll Out Gas Station, Hyde Park Square, New Cairo
-            <br />next to the Administrative Control Compound
+            Because we are distinguished by the best raw materials and the best types of chicken.<br>
+            We provide excellent service, great speed in preparing orders,<br>
+            and we do not allow any error in the order.<br>
+            We care very much about cleanliness and preserving the safety of the customer.
         </p>
-        <p> <a href="https://maps.app.goo.gl/7smZTeTW4e3NcXWd7" target="_blank"> google maps </a> </p>
-    </ul>
-    <h2>4- Contact us:</h2>
-    <ul>
-        <h3>
-            <u>
-                <li>Facebook page:</li>
-            </u>
-        </h3>
 
-        <p> <a href="https://www.facebook.com/Chickenranch.egy" target="_blank"> click here</a> </p>
+        <h2>3- Our branches:</h2>
+        <ul>
+            <li>Branch 1</li>
+            <p>- El Mohandseen, Ahmed Oraby.st<br>
+                <a href="https://maps.app.goo.gl/8K6XMKz2jmTpvsRT9" target="_blank">Google Maps</a>
+            </p>
+            <li>Branch 2</li>
+            <p>- Golden Walk Strip, Waslet Dahshur Rd, Second Al Sheikh Zayed<br>
+                <a href="https://maps.app.goo.gl/c7iVngVosDxzPxvZ7" target="_blank">Google Maps</a>
+            </p>
+            <li>Branch 3</li>
+            <p>- Chilll Out Gas Station, Hyde Park Square, New Cairo<br>
+                Next to the Administrative Control Compound<br>
+                <a href="https://maps.app.goo.gl/7smZTeTW4e3NcXWd7" target="_blank">Google Maps</a>
+            </p>
+        </ul>
 
-        <h3>
-            <u>
-                <li>instagram page: </li>
-            </u>
-        </h3>
-
-        <p> <a href="https://www.instagram.com/chickenranch.eg" target="_blank"> click here </a> </p>
-        
- <HR>
-             
-<H6> Developed by <a href="https://www.instagram.com/24h_.__" target="_blank">Ahmed Ramadan</a></H6>
-
+        <h2>4- Contact us:</h2>
+        <ul>
+            <li>Facebook page:</li>
+            <p><a href="https://www.facebook.com/Chickenranch.egy" target="_blank">Click here</a></p>
+            <li>Instagram page:</li>
+            <p><a href="https://www.instagram.com/chickenranch.eg" target="_blank">Click here</a></p>
+        </ul>
+        <hr>
+        <h6>Developed by <a href="https://www.instagram.com/24h_.__" target="_blank">Ahmed Ramadan</a></h6>
+    </div>
 </body>
 
 </html>
 <!-- نهاية الكود -->
- 
