@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/413894034_809647947842216_5543911497635866413_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=T77R5QvoEPMQ7kNvwFNnSnR&_nc_oc=AdkZdceqhDZHXb61mXiszDC27yHbR-A0GG8Uin6j9LoX_UR7lpxr-s9mZbNDIV_np9w&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=BfdWQtgooeR6WsfDSSarog&oh=00_AfF-JE9FLjTuPQpMV5iT4xuwr5bl_gXsqm4fuSuz6AYNUg&oe=681D970B" type="image/x-icon">
 <!-- ...existing code... -->
-    <style>
-        body {
+          <style>
+        body { 
             background: linear-gradient(135deg, #7b112c 0%, #fff0f3 100%);
             font-family: 'Segoe UI', Arial, sans-serif;
             color: #2d1a1a;
@@ -34,22 +34,31 @@
             margin-bottom: 10px;
             font-size: 2.7rem;
             font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(90deg, #fff0f3 60%, #b9314f22 100%);
+            border-radius: 12px;
+            padding: 10px 0;
+            border-bottom: 3px solid #b9314f;
         }
         h1::after {
             content: "🍗 ";
         }
-        h1::aftefr {
-            content: " 🍟";
-        }
         h2 {
-            color: #b9314f;
+            color: #fff;
+            background: linear-gradient(90deg, #b9314f 60%, #7b112c 100%);
+            padding: 8px 18px;
+            border-radius: 10px;
             margin-top: 32px;
             font-size: 1.5rem;
-            border-left: 6px solid #7b112c;
-            padding-left: 10px;
-            background: #fff0f3;
-            border-radius: 8px;
             display: inline-block;
+            box-shadow: 0 2px 8px #7b112c22;
+            border-left: 6px solid #fff0f3;
+            font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .icon {
+            font-size: 1.2em;
+            margin-left: 8px;
         }
         h3 {
             color: #7b112c;
@@ -92,11 +101,6 @@
             color: #888;
             margin-top: 40px;
         }
-        /* أيقونات للأقسام */
-        .icon {
-            font-size: 1.2em;
-            margin-right: 6px;
-        }
         @media (max-width: 600px) {
             .container {
                 padding: 10px 2vw;
@@ -108,10 +112,15 @@
             h1 {
                 font-size: 2rem;
             }
+            h2 {
+                font-size: 1.1rem;
+                padding: 6px 10px;
+            }
         }
     </style>
 <!-- ...existing code... -->
 </head>
+
 
 <body>
     <div class="container">
@@ -124,10 +133,10 @@
         <h1><u>Chicken Ranch</u></h1>
         <hr />
 
-        <h2>1- Who are we?</h2>
+        <h2>1- Who are we? <span class="icon">👨‍🍳</span>  </h2>
         <p>We are a fast food restaurant serving fried chicken and sandwiches.</p>
 
-        <h2>2- Why us?</h2>
+        <h2>2- Why us?<span class="icon">⭐</span></h2>
         <p>
             Because we are distinguished by the best raw materials and the best types of chicken.<br>
             We provide excellent service, great speed in preparing orders,<br>
@@ -135,7 +144,7 @@
             We care very much about cleanliness and preserving the safety of the customer.
         </p>
 
-        <h2>3- Our branches:</h2>
+        <h2>3- Our branches:<span class="icon">📍</span></h2>
         <ul>
             <li>Branch 1</li>
             <p>- El Mohandseen, Ahmed Oraby.st<br>
@@ -152,7 +161,7 @@
             </p>
         </ul>
 
-        <h2>4- Contact us:</h2>
+        <h2>4- Contact us:<span class="icon">📞</span></h2>
         <ul>
             <li>Facebook page:</li>
             <p><a href="https://www.facebook.com/Chickenranch.egy" target="_blank">Click here</a></p>
@@ -162,6 +171,7 @@
         <hr>
         <h6>Developed by <a href="https://www.instagram.com/24h_.__" target="_blank">Ahmed Ramadan</a></h6>
     </div>
+    
 </body>
 
 </html>
