@@ -9,70 +9,205 @@
     <meta name="keywords" content="restaurant,Fried chicken">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/413894034_809647947842216_5543911497635866413_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=dw3tMcwsP5IQ7kNvwFUf4MC&_nc_oc=Adm3yFjCk_-7MxBWDg57hNXw0SMahN8Z94JJMdjWLHFhGAndZ-wrcph522MuS4GuDXw&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=Jt35ZCsk4VkD9Z4jf-lf0Q&oh=00_AfLsoqVlKgxTA0GOqZ_eAX4oiZnKAjEYQehch5Y44jrU3Q&oe=682D690B" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
           <style>
-            /* فقاعات الأقسام */
+            /* Loader styles */
+#loader {
+  position: fixed;
+  z-index: 2000;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s;
+}
+#loader.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+.spinner {
+  border: 6px solid #eee;
+  border-top: 6px solid #b9314f;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg);}
+}
+
+/* فقاعات الأقسام */
 .section-bubble {
-    background: #eba2a2;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px #7b112c22;
-    padding: 24px 18px 18px 18px;
+    background: #f7ecec;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px #b9314f11;
+    padding: 22px 18px 18px 18px;
     margin-bottom: 28px;
-    border: 2px solid #b9314f22;
-    transition: box-shadow 0.2s;
+    border: 1.5px solid #e2b9b3;
+    transition: background 0.5s, box-shadow 0.5s;
+}
+.section-bubble.visible {
+    box-shadow: 0 12px 36px #b9314f22;
 }
 .section-bubble:hover {
-    box-shadow: 0 8px 32px #7b112c44;
+    box-shadow: 0 12px 36px #b9314f33, 0 2px 8px #0002;
+    background: #fff;
 }
+body.dark-mode .section-bubble {
+  background: #23212a;
+  border-color: #b9314f55;
+  box-shadow: 0 4px 24px #7b112c33;
+}
+body.dark-mode .section-bubble.visible {
+  box-shadow: 0 12px 36px #b9314f44;
+}
+body.dark-mode .section-bubble:hover {
+  background: #2d2533;
+  box-shadow: 0 16px 48px #b9314f66;
+}
+
+/* الصور */
+.img-fade {
+    opacity: 0;
+    transform: translateY(60px) scale(0.92);
+    transition: 
+        opacity 0.8s cubic-bezier(.4,0,.2,1), 
+        transform 0.8s cubic-bezier(.4,0,.2,1),
+        box-shadow 0.5s;
+    will-change: opacity, transform;
+}
+.img-fade.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 8px 32px #b9314f22;
+}
+.img-fade:hover {
+    box-shadow: 0 16px 48px #b9314f44;
+    transform: scale(1.04);
+    transition: box-shadow 0.3s, transform 0.3s;
+    /* animation: shake 0.4s; */ /* تم إلغاء الهزة */
+}
+
+/* يمكنك حذف هذا الجزء بالكامل */
+/*
+@keyframes shake {
+  0% { transform: translateY(0) scale(1.025);}
+  20% { transform: translateY(-2px) scale(1.025);}
+  40% { transform: translateY(2px) scale(1.025);}
+  60% { transform: translateY(-2px) scale(1.025);}
+  80% { transform: translateY(2px) scale(1.025);}
+  100% { transform: translateY(0) scale(1.025);}
+}
+*/
         body { 
-            background: linear-gradient(135deg, #000000 0%, #000000 100%);
-            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f7f5ef 0%, #f3e9e1 100%);
             color: #2d1a1a;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             padding: 0;
+            transition: background 0.5s, color 0.5s;
         }
+        body.dark-mode {
+  background: linear-gradient(135deg, #18191a 0%, #232526 100%);
+  color: #f3eaea;
+}
+        html, body {
+  height: 100%;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  flex: 1 0 auto;
+}
+footer {
+  flex-shrink: 0;
+  background: rgba(185, 49, 79, 0.45); /* شفافية أعلى */
+  color: #fff;
+  text-align: center;
+  padding: 8px 0 4px 0;
+  font-size: 0.92rem;
+  border-radius: 0 0 14px 14px;
+  margin-top: 28px;
+  letter-spacing: 1px;
+  width: 100%;
+  display: block;
+  position: relative;
+  opacity: 0.7; /* شفافية إضافية */
+  transition: opacity 0.3s, transform 0.5s;
+  transform: translateY(30px);
+}
+footer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
         .container {
-            max-width: 850px;
-            margin: 30px auto;
-            background: #66011e;
-            border-radius: 22px;
-            box-shadow: 0 6px 32px #7b112c33;
-            padding: 36px 28px;
-            border: 2px solid #b9314f22;
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fffdfa;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px #b9314f22;
+            padding: 40px 32px;
+            border: 1.5px solid #e2b9b3;
+        }
+        body.dark-mode .container {
+  background: #232526;
+  border-color: #444;
+  box-shadow: 0 8px 32px #000a;
+}
+        h1, h2, h3, h6 {
+            color: #7b112c;
+            margin: 0 0 14px 0;
+            letter-spacing: 1px;
+            font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
         }
         h1 {
-            color: #7b112c;
-            text-align: center;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            font-size: 2.7rem;
-            font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(90deg, #fff0f3 60%, #b9314f22 100%);
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #fff 60%, #e2b9b3 100%);
             border-radius: 12px;
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 3px solid #b9314f;
-        }
-        h1::after {
-            content: "🍗 ";
+            box-shadow: 0 2px 8px #b9314f11;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
         }
         h2 {
-            color: #fff;
-            background: linear-gradient(90deg, #b9314f 60%, #7b112c 100%);
-            padding: 8px 18px;
+            font-size: 1.3rem;
+            background: #f8f6f2;
             border-radius: 10px;
-            margin-top: 32px;
-            font-size: 1.5rem;
+            padding: 8px 18px;
             display: inline-block;
-            box-shadow: 0 2px 8px #7b112c22;
-            border-left: 6px solid #fff0f3;
-            font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
+            box-shadow: 0 2px 8px #b9314f11;
+            border-left: 6px solid #b9314f;
             font-weight: bold;
-            letter-spacing: 1px;
         }
+        body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h6 {
+  color: #ffe5ec;
+  background: none;
+  border-color: #b9314f77;
+}
         .icon {
             font-size: 1.2em;
             margin-left: 8px;
         }
+        .icon i {
+  transition: color 0.3s, transform 0.3s;
+}
+.section-bubble:hover .icon i {
+  color: #b9314f;
+  transform: scale(1.2) rotate(-10deg);
+}
         h3 {
             color: #7b112c;
             margin-bottom: 4px;
@@ -90,13 +225,24 @@
         a {
             color: #7b112c;
             text-decoration: none;
-            transition: color 0.2s;
             font-weight: bold;
+            transition: color 0.2s;
+            animation: pulse 1.5s infinite;
+            border-bottom: 1.5px dotted #b9314f33;
         }
         a:hover {
             color: #b9314f;
             text-decoration: underline;
+            border-bottom: 1.5px solid #b9314f;
         }
+        body.dark-mode a {
+  color: #ffb3c6;
+  border-bottom: 1.5px dotted #ffb3c655;
+}
+body.dark-mode a:hover {
+  color: #fff;
+  border-bottom: 1.5px solid #fff;
+}
         img {
             border-radius: 16px;
             margin: 8px 8px 18px 0;
@@ -104,16 +250,71 @@
             border: 2px solid #fff0f3;
             background: #fff0f3;
         }
+        body.dark-mode img,
+body.dark-mode .img-fade {
+  background: #232126;
+  border-color: #18191a;
+  box-shadow: 0 4px 24px #000a;
+}
         hr {
             border: none;
-            border-top: 2px solid #b9314f;
+            border-top: 2px solid #e2b9b3;
             margin: 24px 0;
         }
+        body.dark-mode hr {
+  border-top: 2px solid #444;
+}
         h6 {
             text-align: center;
             color: #888;
             margin-top: 40px;
         }
+        /* زر العودة للأعلى */
+#backToTop {
+  display: none;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 999;
+  background: #b9314f;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.7rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px #7b112c55;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#backToTop:hover {
+  background: #7b112c;
+  transform: scale(1.1);
+}
+body.dark-mode #backToTop {
+  background: #18191a;
+  color: #ffb3c6;
+}
+body.dark-mode #backToTop:hover {
+  background: #7b112c;
+}
+        /* Pulse effect */
+.pulse {
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 #b9314f33; }
+  70% { box-shadow: 0 0 0 12px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* Zoom out on image click */
+.img-fade:active {
+  transform: scale(0.97);
+  transition: transform 0.1s;
+}
+
         @media (max-width: 600px) {
             .container {
                 padding: 10px 2vw;
@@ -129,31 +330,60 @@
                 font-size: 1.1rem;
                 padding: 6px 10px;
             }
+  #toggle-theme, #fontPlus, #backToTop {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.3rem !important;
+    top: 12px !important;
+  }
+  #toggle-theme { left: 12px !important; }
+  #fontPlus { right: 12px !important; }
+  #backToTop { right: 12px !important; bottom: 12px !important; }
         }
+
+#lightbox-overlay {
+  transition: opacity 0.3s;
+  cursor: zoom-out;
+}
+#lightbox-img {
+  box-shadow: 0 8px 32px #000a;
+  border: 4px solid #fff;
+}
+
+body[dir="rtl"] {
+  text-align: right;
+}
+body[dir="ltr"] {
+  text-align: left;
+}
     </style>
 
 </head>
 
 
 <body>
+    <!-- Loader -->
+<div id="loader">
+  <div class="spinner"></div>
+</div>
+
     <div class="container">
-        <img src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/434093627_878501077623569_9082809152095648231_n.png?stp=dst-png_s960x960&_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=9xJetv86M6gQ7kNvwFfxOYy&_nc_oc=Adn9_Y2ekt7q6vm2n5N72VzdQ5u3THIVrKECDVlZHnAQ5MKPY95BIMy99Xy0gbdqS9I&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=Ev9-IofuXSRVjULwCP0b3g&oh=00_AfJDd4ZbC6PBlH4kACRaSDd_L4DDNPggoBu5hKzPRl0UXg&oe=682D80FB" width="350">
+        <img class="img-fade" loading="lazy" src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/434093627_878501077623569_9082809152095648231_n.png?stp=dst-png_s960x960&_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=9xJetv86M6gQ7kNvwFfxOYy&_nc_oc=Adn9_Y2ekt7q6vm2n5N72VzdQ5u3THIVrKECDVlZHnAQ5MKPY95BIMy99Xy0gbdqS9I&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=Ev9-IofuXSRVjULwCP0b3g&oh=00_AfJDd4ZbC6PBlH4kACRaSDd_L4DDNPggoBu5hKzPRl0UXg&oe=682D80FB" width="350" alt="Chicken Ranch Logo">
        <br>
-        <img src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/495188688_1169630371843970_909718641186209204_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=mgim9OobBxgQ7kNvwHyF_oo&_nc_oc=AdkKDvMSTPYLtJwUJdePOSIzVq5BFZJVNkOZRQqCef3rSJ4IMbFoXMMsaxUuYaBAf28&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=1reocuC0xo37xVE2Eb_6iQ&oh=00_AfJzp4msSc8SgjJPbPMJ-_cQTuk3W8wPlMr27Ax0cX1kBA&oe=682D7805" width="350">
+        <img class="img-fade" loading="lazy" src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/495188688_1169630371843970_909718641186209204_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=mgim9OobBxgQ7kNvwHyF_oo&_nc_oc=AdkKDvMSTPYLtJwUJdePOSIzVq5BFZJVNkOZRQqCef3rSJ4IMbFoXMMsaxUuYaBAf28&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=1reocuC0xo37xVE2Eb_6iQ&oh=00_AfJzp4msSc8SgjJPbPMJ-_cQTuk3W8wPlMr27Ax0cX1kBA&oe=682D7805" width="350" alt="Fried chicken meal">
        <br>
-        <img src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/494039910_1169630401843967_8765505607506402736_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=chS821nIq9AQ7kNvwFeVU8F&_nc_oc=Adl8jmp2eJZoMVVd1NAytjmKBJgvQ5NrLqHTxb4b4rJI18Wgt8AXu26B2UQRh1b0ETI&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=kAGlVPFLSnzML9Mv6OX9Rg&oh=00_AfIgonB3XQ3BWa2sjnoASOHAB6Vnrzk7-dwsG9kFyW3B8A&oe=682D8226" width="350">
+        <img class="img-fade" loading="lazy" src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/494039910_1169630401843967_8765505607506402736_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=chS821nIq9AQ7kNvwFeVU8F&_nc_oc=Adl8jmp2eJZoMVVd1NAytjmKBJgvQ5NrLqHTxb4b4rJI18Wgt8AXu26B2UQRh1b0ETI&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=kAGlVPFLSnzML9Mv6OX9Rg&oh=00_AfIgonB3XQ3BWa2sjnoASOHAB6Vnrzk7-dwsG9kFyW3B8A&oe=682D8226" width="350" alt="Chicken Ranch restaurant branch">
 
         <h1><u>Chicken Ranch</u></h1>
         <hr />
 
-       <!-- ...existing code... -->
         <div class="section-bubble">
-            <h2>1- Who are we? <span class="icon">👨‍🍳</span></h2>
+            <h2>1- Who are we? <span class="icon"><i class="fa-solid fa-user-tie"></i></span></h2>
             <p>We are a fast food restaurant serving fried chicken and sandwiches.</p>
         </div>
 
         <div class="section-bubble">
-            <h2>2- Why us?<span class="icon">⭐</span></h2>
+            <h2>2- Why us?<span class="icon"><i class="fa-solid fa-star"></i></span></h2>
             <p>
                 Because we are distinguished by the best raw materials and the best types of chicken.<br>
                 We provide excellent service, great speed in preparing orders,<br>
@@ -163,7 +393,7 @@
         </div>
 
         <div class="section-bubble">
-            <h2>3- Our branches:<span class="icon">📍</span></h2>
+            <h2>3- Our branches:<span class="icon"><i class="fa-solid fa-location-dot"></i></span></h2>
             <ul>
                 <li>Branch 1</li>
                 <p>- El Mohandseen, Ahmed Oraby.st<br>
@@ -171,18 +401,18 @@
                 </p>
                 <li>Branch 2</li>
                 <p>- Golden Walk Strip, Waslet Dahshur Rd, Second Al Sheikh Zayed<br>
-                    <a href="https://maps.app.goo.gl/c7iVngVosDxzPxvZ7" target="_blank">Google Maps</a>
+                    <a href="https://maps.app.goo.gl/c7iVngVosDxzPxvZ7" target="_blank" class="pulse">Google Maps</a>
                 </p>
                 <li>Branch 3</li>
                 <p>- Chilll Out Gas Station, Hyde Park Square, New Cairo<br>
                     Next to the Administrative Control Compound<br>
-                    <a href="https://maps.app.goo.gl/7smZTeTW4e3NcXWd7" target="_blank">Google Maps</a>
+                    <a href="https://maps.app.goo.gl/7smZTeTW4e3NcXWd7" target="_blank" class="pulse">Google Maps</a>
                 </p>
             </ul>
         </div>
 
         <div class="section-bubble">
-            <h2>4- Contact us:<span class="icon">📞</span></h2>
+            <h2>4- Contact us:<span class="icon"><i class="fa-solid fa-phone"></i></span></h2>
             <ul>
                 <li>Facebook page:</li>
                 <p><a href="https://www.facebook.com/Chickenranch.egy" target="_blank">Click here</a></p>
@@ -190,11 +420,257 @@
                 <p><a href="https://www.instagram.com/chickenranch.eg" target="_blank">Click here</a></p>
             </ul>
         </div>
-<!-- ...existing code... -->
         <hr>
        <div class="section-bubble"><h6>Developed by <a href="https://ronymasr.github.io/my-link/" target="_blank">Ahmed Ramadan</a></h6></div> 
-    </div>
+    </div> <!-- نهاية .container -->
     
+    <!-- زر العودة للأعلى -->
+<button id="backToTop" title="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+<!-- زر تبديل الوضع الليلي -->
+<button id="toggle-theme" style="position:fixed;top:18px;left:18px;z-index:3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
+  <i id="theme-icon" class="fa-solid fa-sun"></i>
+</button>
+<!-- زر تكبير الخط -->
+<button id="fontPlus" style="position:fixed;top:18px;right:18px;z-index=3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
+  <i class="fa-solid fa-a"></i>
+</button>
+<!-- زر تغيير اللغة -->
+<button id="langSwitch" style="position:fixed;top:18px;left:70px;z-index=3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.1rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
+  <i class="fa-solid fa-language"></i>
+</button>
+
+    <!-- Lightbox overlay -->
+<div id="lightbox-overlay" style="display:none; position:fixed; z-index=3000; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); align-items:center; justify-content:center;">
+  <img id="lightbox-img" src="" alt="Preview" style="max-width:90vw; max-height:90vh; border-radius:18px; box-shadow:0 8px 32px #000a;">
+</div>
+
+    <div id="scroll-progress" style="position:fixed;top:0;left:0;height:5px;width:0;background:#b9314f;z-index=3002;transition:width 0.2s;"></div>
+
+    <script>
+document.documentElement.dir = (navigator.language || navigator.userLanguage).startsWith('ar') ? 'rtl' : 'ltr';
+function revealBubblesOnScroll() {
+    const images = document.querySelectorAll('.img-fade');
+    const triggerBottom = window.innerHeight * 0.92;
+    let delay = 0;
+    images.forEach((img, i) => {
+        const imgTop = img.getBoundingClientRect().top;
+        if (imgTop < triggerBottom) {
+            setTimeout(() => img.classList.add('visible'), delay);
+            delay += 120;
+        } else {
+            img.classList.remove('visible');
+        }
+    });
+}
+window.addEventListener('scroll', revealBubblesOnScroll);
+window.addEventListener('load', revealBubblesOnScroll);
+
+function revealTitlesOnScroll() {
+  document.querySelectorAll('h1, h2').forEach(title => {
+    const top = title.getBoundingClientRect().top;
+    const trigger = window.innerHeight * 0.92;
+    if (top < trigger) {
+      title.classList.add('title-visible');
+    } else {
+      title.classList.remove('title-visible');
+    }
+  });
+}
+window.addEventListener('scroll', revealTitlesOnScroll);
+window.addEventListener('load', revealTitlesOnScroll);
+
+// إظهار زر العودة للأعلى عند التمرير لأسفل
+const backToTopBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+});
+
+// العودة للأعلى عند النقر على الزر
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// زر العودة للأعلى
+window.addEventListener('scroll', function() {
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) {
+    btn.style.display = 'block';
+  } else {
+    btn.style.display = 'none';
+  }
+});
+document.getElementById('backToTop').onclick = function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+
+
+// Lightbox functionality
+document.querySelectorAll('.img-fade').forEach(img => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', function() {
+    const overlay = document.getElementById('lightbox-overlay');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = this.src;
+    overlay.style.display = 'flex';
+  });
+});
+document.getElementById('lightbox-overlay').addEventListener('click', function(e) {
+  if (e.target === this) this.style.display = 'none';
+});
+
+// تكبير وتصغير الخط
+const fontBtn = document.getElementById('fontPlus');
+let fontSize = 1;
+fontBtn.onclick = function() {
+  fontSize += 0.1;
+  if (fontSize > 1.5) fontSize = 1; // يرجع للحجم الأصلي بعد التكبير
+  document.body.style.fontSize = fontSize + "em";
+};
+
+// تحديث شريط تقدم التمرير
+function updateScrollProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight;
+  const winHeight = window.innerHeight;
+  const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+  document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+}
+window.addEventListener('scroll', updateScrollProgress);
+window.addEventListener('load', updateScrollProgress);
+
+const themeBtn = document.getElementById('toggle-theme');
+const themeIcon = document.getElementById('theme-icon');
+function setTheme(dark) {
+  if (dark) {
+    document.body.classList.add('dark-mode');
+    themeIcon.className = 'fa-solid fa-sun';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.body.classList.remove('dark-mode');
+    themeIcon.className = 'fa-solid fa-moon';
+    localStorage.setItem('theme', 'light');
+  }
+}
+themeBtn.onclick = function() {
+  setTheme(!document.body.classList.contains('dark-mode'));
+};
+window.addEventListener('DOMContentLoaded', function() {
+  setTheme(localStorage.getItem('theme') === 'dark');
+});
+
+window.addEventListener('scroll', function() {
+  const footer = document.querySelector('footer');
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 20) {
+    footer.classList.add('visible');
+  } else {
+    footer.classList.remove('visible');
+  }
+});
+
+const langBtn = document.getElementById('langSwitch');
+const translations = {
+  en: {
+    title: "Chicken Ranch",
+    who: "1- Who are we?",
+    whoText: "We are a fast food restaurant serving fried chicken and sandwiches.",
+    why: "2- Why us?",
+    whyText: "Because we are distinguished by the best raw materials and the best types of chicken.<br>We provide excellent service, great speed in preparing orders,<br>and we do not allow any error in the order.<br>We care very much about cleanliness and preserving the safety of the customer.",
+    branches: "3- Our branches:",
+    branch1: "Branch 1",
+    branch1Addr: "- El Mohandseen, Ahmed Oraby.st",
+    branch2: "Branch 2",
+    branch2Addr: "- Golden Walk Strip, Waslet Dahshur Rd, Second Al Sheikh Zayed",
+    branch3: "Branch 3",
+    branch3Addr: "- Chilll Out Gas Station, Hyde Park Square, New Cairo<br>Next to the Administrative Control Compound",
+    contact: "4- Contact us:",
+    facebook: "Facebook page:",
+    instagram: "Instagram page:",
+    click: "Click here",
+    copyright: "Copyright 2025 Ahmed Ramadan. All rights reserved."
+  },
+  ar: {
+    title: "تشيكن رانش",
+    who: "١- من نحن؟",
+    whoText: "نحن مطعم وجبات سريعة متخصص في تقديم الدجاج المقلي والسندويتشات.",
+    why: "٢- لماذا نحن؟",
+    whyText: "لأننا نتميز بأفضل الخامات وأجود أنواع الدجاج.<br>نقدم خدمة ممتازة وسرعة كبيرة في تجهيز الطلبات،<br>ولا نسمح بأي خطأ في الطلب.<br>نهتم كثيرًا بالنظافة والحفاظ على سلامة العميل.",
+    branches: "٣- فروعنا:",
+    branch1: "الفرع ١",
+    branch1Addr: "- المهندسين، شارع أحمد عرابي",
+    branch2: "الفرع ٢",
+    branch2Addr: "- جولدن ووك ستريب، وصلة دهشور، الشيخ زايد",
+    branch3: "الفرع ٣",
+    branch3Addr: "- محطة بنزين شيل أوت، هايد بارك سكوير، القاهرة الجديدة<br>بجوار مجمع الرقابة الإدارية",
+    contact: "٤- تواصل معنا:",
+    facebook: "صفحة فيسبوك:",
+    instagram: "صفحة انستجرام:",
+    click: "اضغط هنا",
+    copyright: "جميع الحقوق محفوظة © 2025 أحمد رمضان"
+  }
+};
+
+langBtn.onclick = function() {
+  let lang = document.documentElement.lang === 'ar' ? 'en' : 'ar';
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+  // تغيير النصوص
+  document.querySelector('h1 u').textContent = translations[lang].title;
+  document.querySelectorAll('.section-bubble h2')[0].childNodes[0].nodeValue = translations[lang].who + " ";
+  document.querySelectorAll('.section-bubble p')[0].innerHTML = translations[lang].whoText;
+  document.querySelectorAll('.section-bubble h2')[1].childNodes[0].nodeValue = translations[lang].why;
+  document.querySelectorAll('.section-bubble p')[1].innerHTML = translations[lang].whyText;
+  document.querySelectorAll('.section-bubble h2')[2].childNodes[0].nodeValue = translations[lang].branches;
+  let ul = document.querySelectorAll('.section-bubble ul')[0];
+  ul.children[0].textContent = translations[lang].branch1;
+  ul.children[1].innerHTML = translations[lang].branch1Addr + `<br><a href="https://maps.app.goo.gl/8K6XMKz2jmTpvsRT9" target="_blank">${translations[lang].click}</a>`;
+  ul.children[2].textContent = translations[lang].branch2;
+  ul.children[3].innerHTML = translations[lang].branch2Addr + `<br><a href="https://maps.app.goo.gl/c7iVngVosDxzPxvZ7" target="_blank" class="pulse">${translations[lang].click}</a>`;
+  ul.children[4].textContent = translations[lang].branch3;
+  ul.children[5].innerHTML = translations[lang].branch3Addr + `<br><a href="https://maps.app.goo.gl/7smZTeTW4e3NcXWd7" target="_blank" class="pulse">${translations[lang].click}</a>`;
+
+  document.querySelectorAll('.section-bubble h2')[3].childNodes[0].nodeValue = translations[lang].contact;
+  let ul2 = document.querySelectorAll('.section-bubble ul')[1];
+  ul2.children[0].textContent = translations[lang].facebook;
+  ul2.children[1].innerHTML = `<a href="https://www.facebook.com/Chickenranch.egy" target="_blank">${translations[lang].click}</a>`;
+  ul2.children[2].textContent = translations[lang].instagram;
+  ul2.children[3].innerHTML = `<a href="https://www.instagram.com/chickenranch.eg" target="_blank">${translations[lang].click}</a>`;
+
+  document.querySelector('footer p').textContent = translations[lang].copyright;
+};
+    </script>
+<script>
+window.addEventListener('load', function() {
+  document.getElementById('loader').classList.add('hide');
+  setTimeout(() => {
+    document.getElementById('loader').style.display = 'none';
+  }, 0); // ← هنا تم زيادة المدة
+});
+</script>
+<footer>
+  <p>Copyright 2025 Ahmed Ramadan. All rights reserved.</p>
+</footer>
+<!-- رسالة الترحيب -->
+<div id="welcome-msg" style="position:fixed;top:70px;right:20px;z-index:4000;background:#fff0f3;color:#7b112c;padding:12px 22px;border-radius:12px;box-shadow:0 2px 8px #b9314f22;display:none;">
+  Welcome to Chicken Ranch!
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  const msg = document.getElementById('welcome-msg');
+  msg.style.display = 'block';
+  setTimeout(() => { msg.style.display = 'none'; }, 3500);
+});
+</script>
 </body>
 
 </html>
