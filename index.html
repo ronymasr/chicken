@@ -3,96 +3,115 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <title>Chicken Ranch</title>
     <meta name="description" content="About the restaurant">
     <meta name="Developer" content="Ahmed Ramadan">
     <meta name="keywords" content="restaurant,Fried chicken">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/413894034_809647947842216_5543911497635866413_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=dw3tMcwsP5IQ7kNvwFUf4MC&_nc_oc=Adm3yFjCk_-7MxBWDg57hNXw0SMahN8Z94JJMdjWLHFhGAndZ-wrcph522MuS4GuDXw&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=Jt35ZCsk4VkD9Z4jf-lf0Q&oh=00_AfLsoqVlKgxTA0GOqZ_eAX4oiZnKAjEYQehch5Y44jrU3Q&oe=682D690B" type="image/x-icon">
+    <link rel="icon"
+        href="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/413894034_809647947842216_5543911497635866413_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=dw3tMcwsP5IQ7kNvwFUf4MC&_nc_oc=Adm3yFjCk_-7MxBWDg57hNXw0SMahN8Z94JJMdjWLHFhGAndZ-wrcph522MuS4GuDXw&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=Jt35ZCsk4VkD9Z4jf-lf0Q&oh=00_AfLsoqVlKgxTA0GOqZ_eAX4oiZnKAjEYQehch5Y44jrU3Q&oe=682D690B"
+        type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-          <style>
-            /* Loader styles */
-#loader {
-  position: fixed;
-  z-index: 2000;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(255,255,255,0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.5s;
-}
-#loader.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-.spinner {
-  border: 6px solid #eee;
-  border-top: 6px solid #b9314f;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
-}
-@keyframes spin {
-  100% { transform: rotate(360deg);}
-}
+    <style>
+        /* Loader styles */
+        #loader {
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s;
+        }
 
-/* فقاعات الأقسام */
-.section-bubble {
-    background: #f7ecec;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px #b9314f11;
-    padding: 22px 18px 18px 18px;
-    margin-bottom: 28px;
-    border: 1.5px solid #e2b9b3;
-    transition: background 0.5s, box-shadow 0.5s;
-}
-.section-bubble.visible {
-    box-shadow: 0 12px 36px #b9314f22;
-}
-.section-bubble:hover {
-    box-shadow: 0 12px 36px #b9314f33, 0 2px 8px #0002;
-    background: #fff;
-}
-body.dark-mode .section-bubble {
-  background: #23212a;
-  border-color: #b9314f55;
-  box-shadow: 0 4px 24px #7b112c33;
-}
-body.dark-mode .section-bubble.visible {
-  box-shadow: 0 12px 36px #b9314f44;
-}
-body.dark-mode .section-bubble:hover {
-  background: #2d2533;
-  box-shadow: 0 16px 48px #b9314f66;
-}
+        #loader.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
 
-/* الصور */
-.img-fade {
-    opacity: 0;
-    transform: translateY(60px) scale(0.92);
-    transition: 
-        opacity 0.8s cubic-bezier(.4,0,.2,1), 
-        transform 0.8s cubic-bezier(.4,0,.2,1),
-        box-shadow 0.5s;
-    will-change: opacity, transform;
-}
-.img-fade.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    box-shadow: 0 8px 32px #b9314f22;
-}
-.img-fade:hover {
-    box-shadow: 0 16px 48px #b9314f44;
-    transform: scale(1.04);
-    transition: box-shadow 0.3s, transform 0.3s;
-    /* animation: shake 0.4s; */ /* تم إلغاء الهزة */
-}
+        .spinner {
+            border: 6px solid #eee;
+            border-top: 6px solid #b9314f;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
 
-/* يمكنك حذف هذا الجزء بالكامل */
-/*
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* فقاعات الأقسام */
+        .section-bubble {
+            background: #f7ecec;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px #b9314f11;
+            padding: 22px 18px 18px 18px;
+            margin-bottom: 28px;
+            border: 1.5px solid #e2b9b3;
+            transition: background 0.5s, box-shadow 0.5s;
+        }
+
+        .section-bubble.visible {
+            box-shadow: 0 12px 36px #b9314f22;
+        }
+
+        .section-bubble:hover {
+            box-shadow: 0 12px 36px #b9314f33, 0 2px 8px #0002;
+            background: #fff;
+        }
+
+        body.dark-mode .section-bubble {
+            background: #23212a;
+            border-color: #b9314f55;
+            box-shadow: 0 4px 24px #7b112c33;
+        }
+
+        body.dark-mode .section-bubble.visible {
+            box-shadow: 0 12px 36px #b9314f44;
+        }
+
+        body.dark-mode .section-bubble:hover {
+            background: #2d2533;
+            box-shadow: 0 16px 48px #b9314f66;
+        }
+
+        /* الصور */
+        .img-fade {
+            opacity: 0;
+            transform: translateY(60px) scale(0.92);
+            transition:
+                opacity 0.8s cubic-bezier(.4, 0, .2, 1),
+                transform 0.8s cubic-bezier(.4, 0, .2, 1),
+                box-shadow 0.5s;
+            will-change: opacity, transform;
+        }
+
+        .img-fade.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            box-shadow: 0 8px 32px #b9314f22;
+        }
+
+        .img-fade:hover {
+            box-shadow: 0 16px 48px #b9314f44;
+            transform: scale(1.04);
+            transition: box-shadow 0.3s, transform 0.3s;
+            /* animation: shake 0.4s; */
+            /* تم إلغاء الهزة */
+        }
+
+        /* يمكنك حذف هذا الجزء بالكامل */
+        /*
 @keyframes shake {
   0% { transform: translateY(0) scale(1.025);}
   20% { transform: translateY(-2px) scale(1.025);}
@@ -102,50 +121,62 @@ body.dark-mode .section-bubble:hover {
   100% { transform: translateY(0) scale(1.025);}
 }
 */
-        body { 
+        body {
             background: linear-gradient(135deg, #f7f5ef 0%, #f3e9e1 100%);
-            color: #2d1a1a;
+            color: #33353a;
+            /* لون رمادي داكن مريح للعين */
             font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             padding: 0;
             transition: background 0.5s, color 0.5s;
         }
+
         body.dark-mode {
-  background: linear-gradient(135deg, #18191a 0%, #232526 100%);
-  color: #f3eaea;
-}
-        html, body {
-  height: 100%;
-}
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.container {
-  flex: 1 0 auto;
-}
-footer {
-  flex-shrink: 0;
-  background: rgba(185, 49, 79, 0.45); /* شفافية أعلى */
-  color: #fff;
-  text-align: center;
-  padding: 8px 0 4px 0;
-  font-size: 0.92rem;
-  border-radius: 0 0 14px 14px;
-  margin-top: 28px;
-  letter-spacing: 1px;
-  width: 100%;
-  display: block;
-  position: relative;
-  opacity: 0.7; /* شفافية إضافية */
-  transition: opacity 0.3s, transform 0.5s;
-  transform: translateY(30px);
-}
-footer.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+            background: linear-gradient(135deg, #18191a 0%, #232526 100%);
+            color: #e3e3e3;
+            /* لون رمادي فاتح مريح في الوضع الليلي */
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            flex: 1 0 auto;
+        }
+
+        footer {
+            flex-shrink: 0;
+            background: rgba(185, 49, 79, 0.45);
+            /* شفافية أعلى */
+            color: #fff;
+            text-align: center;
+            padding: 8px 0 4px 0;
+            font-size: 0.92rem;
+            border-radius: 0 0 14px 14px;
+            margin-top: 28px;
+            letter-spacing: 1px;
+            width: 100%;
+            display: block;
+            position: relative;
+            opacity: 0.7;
+            /* شفافية إضافية */
+            transition: opacity 0.3s, transform 0.5s;
+            transform: translateY(30px);
+        }
+
+        footer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .container {
             max-width: 900px;
             margin: 40px auto;
@@ -155,17 +186,23 @@ footer.visible {
             padding: 40px 32px;
             border: 1.5px solid #e2b9b3;
         }
+
         body.dark-mode .container {
-  background: #232526;
-  border-color: #444;
-  box-shadow: 0 8px 32px #000a;
-}
-        h1, h2, h3, h6 {
+            background: #232526;
+            border-color: #444;
+            box-shadow: 0 8px 32px #000a;
+        }
+
+        h1,
+        h2,
+        h3,
+        h6 {
             color: #7b112c;
             margin: 0 0 14px 0;
             letter-spacing: 1px;
             font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
         }
+
         h1 {
             font-size: 2.5rem;
             font-weight: bold;
@@ -179,6 +216,7 @@ footer.visible {
             margin-right: auto;
             display: block;
         }
+
         h2 {
             font-size: 1.3rem;
             background: #f8f6f2;
@@ -189,39 +227,47 @@ footer.visible {
             border-left: 6px solid #b9314f;
             font-weight: bold;
         }
+
         body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode h6 {
-  color: #ffe5ec;
-  background: none;
-  border-color: #b9314f77;
-}
+        body.dark-mode h2,
+        body.dark-mode h3,
+        body.dark-mode h6 {
+            color: #ffe5ec;
+            background: none;
+            border-color: #b9314f77;
+        }
+
         .icon {
             font-size: 1.2em;
             margin-left: 8px;
         }
+
         .icon i {
-  transition: color 0.3s, transform 0.3s;
-}
-.section-bubble:hover .icon i {
-  color: #b9314f;
-  transform: scale(1.2) rotate(-10deg);
-}
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .section-bubble:hover .icon i {
+            color: #b9314f;
+            transform: scale(1.2) rotate(-10deg);
+        }
+
         h3 {
             color: #7b112c;
             margin-bottom: 4px;
         }
+
         ul {
             list-style: none;
             padding-left: 0;
         }
+
         li {
             font-weight: bold;
             color: #b9314f;
             margin-bottom: 6px;
             font-size: 1.1rem;
         }
+
         a {
             color: #7b112c;
             text-decoration: none;
@@ -230,19 +276,23 @@ body.dark-mode h6 {
             animation: pulse 1.5s infinite;
             border-bottom: 1.5px dotted #b9314f33;
         }
+
         a:hover {
             color: #b9314f;
             text-decoration: underline;
             border-bottom: 1.5px solid #b9314f;
         }
+
         body.dark-mode a {
-  color: #ffb3c6;
-  border-bottom: 1.5px dotted #ffb3c655;
-}
-body.dark-mode a:hover {
-  color: #fff;
-  border-bottom: 1.5px solid #fff;
-}
+            color: #ffb3c6;
+            border-bottom: 1.5px dotted #ffb3c655;
+        }
+
+        body.dark-mode a:hover {
+            color: #fff;
+            border-bottom: 1.5px solid #fff;
+        }
+
         img {
             border-radius: 16px;
             margin: 8px 8px 18px 0;
@@ -250,112 +300,321 @@ body.dark-mode a:hover {
             border: 2px solid #fff0f3;
             background: #fff0f3;
         }
+
         body.dark-mode img,
-body.dark-mode .img-fade {
-  background: #232126;
-  border-color: #18191a;
-  box-shadow: 0 4px 24px #000a;
-}
+        body.dark-mode .img-fade {
+            background: #232126;
+            border-color: #18191a;
+            box-shadow: 0 4px 24px #000a;
+        }
+
         hr {
             border: none;
             border-top: 2px solid #e2b9b3;
             margin: 24px 0;
         }
+
         body.dark-mode hr {
-  border-top: 2px solid #444;
-}
+            border-top: 2px solid #444;
+        }
+
         h6 {
             text-align: center;
             color: #888;
             margin-top: 40px;
         }
+
         /* زر العودة للأعلى */
-#backToTop {
-  display: none;
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  z-index: 999;
-  background: #b9314f;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 1.7rem;
-  cursor: pointer;
-  box-shadow: 0 4px 16px #7b112c55;
-  transition: background 0.2s, transform 0.2s;
-}
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 999;
+            background: #b9314f;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 1.7rem;
+            cursor: pointer;
+            box-shadow: 0 4px 16px #7b112c55;
+            transition: background 0.2s, transform 0.2s;
+        }
 
-#backToTop:hover {
-  background: #7b112c;
-  transform: scale(1.1);
-}
-body.dark-mode #backToTop {
-  background: #18191a;
-  color: #ffb3c6;
-}
-body.dark-mode #backToTop:hover {
-  background: #7b112c;
-}
+        #backToTop:hover {
+            background: #7b112c;
+            transform: scale(1.1);
+        }
+
+        body.dark-mode #backToTop {
+            background: #18191a;
+            color: #ffb3c6;
+        }
+
+        body.dark-mode #backToTop:hover {
+            background: #7b112c;
+        }
+
         /* Pulse effect */
-.pulse {
-  animation: pulse 1.5s infinite;
-}
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 #b9314f33; }
-  70% { box-shadow: 0 0 0 12px transparent; }
-  100% { box-shadow: 0 0 0 0 transparent; }
-}
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
 
-/* Zoom out on image click */
-.img-fade:active {
-  transform: scale(0.97);
-  transition: transform 0.1s;
-}
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 #b9314f33;
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px transparent;
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 transparent;
+            }
+        }
+
+        /* Zoom out on image click */
+        .img-fade:active {
+            transform: scale(0.97);
+            transition: transform 0.1s;
+        }
 
         @media (max-width: 600px) {
             .container {
                 padding: 10px 2vw;
             }
+
             img {
                 width: 95% !important;
                 margin: 8px 0;
             }
+
             h1 {
                 font-size: 2rem;
             }
+
             h2 {
                 font-size: 1.1rem;
                 padding: 6px 10px;
             }
-  #toggle-theme, #fontPlus, #backToTop {
-    width: 44px !important;
-    height: 44px !important;
-    font-size: 1.3rem !important;
-    top: 12px !important;
-  }
-  #toggle-theme { left: 12px !important; }
-  #fontPlus { right: 12px !important; }
-  #backToTop { right: 12px !important; bottom: 12px !important; }
+
+            #toggle-theme,
+            #fontPlus,
+            #backToTop {
+                width: 44px !important;
+                height: 44px !important;
+                font-size: 1.3rem !important;
+                top: 12px !important;
+            }
+
+            #toggle-theme {
+                left: 12px !important;
+            }
+
+            #fontPlus {
+                right: 12px !important;
+            }
+
+            #backToTop {
+                right: 12px !important;
+                bottom: 12px !important;
+            }
         }
 
-#lightbox-overlay {
-  transition: opacity 0.3s;
-  cursor: zoom-out;
-}
-#lightbox-img {
-  box-shadow: 0 8px 32px #000a;
-  border: 4px solid #fff;
-}
+        #lightbox-overlay {
+            transition: opacity 0.3s;
+            cursor: zoom-out;
+        }
 
-body[dir="rtl"] {
-  text-align: right;
-}
-body[dir="ltr"] {
-  text-align: left;
-}
+        #lightbox-img {
+            box-shadow: 0 8px 32px #000a;
+            border: 4px solid #fff;
+        }
+
+        body[dir="rtl"] {
+            text-align: right;
+        }
+
+        body[dir="ltr"] {
+            text-align: left;
+        }
+
+        /* زر مشاركة عائم */
+        #fab-share-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 4001;
+        }
+
+        body[dir="rtl"] #fab-share-container {
+            right: auto;
+            left: 24px;
+        }
+
+        #fab-share-btn {
+            background: #b9314f;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            font-size: 2rem;
+            box-shadow: 0 4px 16px #7b112c55;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        #fab-share-btn:hover {
+            background: #7b112c;
+            transform: scale(1.08);
+        }
+
+        .join-form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px 22px;
+            margin-top: 10px;
+            align-items: end;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group.wide {
+            grid-column: span 2;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .join-form-grid input,
+        .join-form-grid select {
+            padding: 8px 10px;
+            border-radius: 7px;
+            border: 1.5px solid #e2b9b3;
+            font-size: 1rem;
+            transition: border 0.2s, box-shadow 0.2s;
+            background: #fffdfa;
+            outline: none;
+        }
+
+        .join-form-grid input:focus,
+        .join-form-grid select:focus {
+            border-color: #b9314f;
+            box-shadow: 0 0 0 2px #b9314f22;
+        }
+
+        .join-form-grid label {
+            font-weight: 500;
+            color: #7b112c;
+            margin-bottom: 2px;
+            font-size: 0.98rem;
+        }
+
+        #join-submit {
+            background: linear-gradient(90deg, #b9314f 60%, #e2b9b3 100%);
+            color: #fff;
+            padding: 10px 38px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px #b9314f22;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        #join-submit:hover {
+            background: #7b112c;
+            transform: scale(1.05);
+        }
+
+        .join-toast {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #b9314f;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 12px;
+            z-index: 5000;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 12px #b9314f44;
+            transition: opacity 0.3s;
+            opacity: 0.95;
+            pointer-events: none;
+        }
+
+        @media (max-width: 700px) {
+            .join-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.wide,
+            .form-group.full {
+                grid-column: 1;
+            }
+        }
+
+        /* ملاحظات إضافية */
+        /* يمكنك إضافة أي أنماط إضافية هنا */
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: flex-start;
+        }
+
+        .qty-btn {
+            background: #fff0f3;
+            color: #b9314f;
+            border: none;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #b9314f22;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+
+        .qty-btn:hover {
+            background: #b9314f;
+            color: #fff;
+            transform: scale(1.08);
+        }
+
+        #order-qty {
+            width: 44px;
+            text-align: center;
+            font-size: 1.1rem;
+            border: 1.5px solid #e2b9b3;
+            border-radius: 7px;
+            background: #fffdfa;
+            color: #33353a;
+            pointer-events: none;
+            outline: none;
+            padding: 6px 0;
+        }
+
+        body.dark-mode #order-qty {
+            background: #232526;
+            color: #e3e3e3;
+        }
     </style>
 
 </head>
@@ -363,16 +622,22 @@ body[dir="ltr"] {
 
 <body>
     <!-- Loader -->
-<div id="loader">
-  <div class="spinner"></div>
-</div>
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
 
     <div class="container">
-        <img class="img-fade" loading="lazy" src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/434093627_878501077623569_9082809152095648231_n.png?stp=dst-png_s960x960&_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=9xJetv86M6gQ7kNvwFfxOYy&_nc_oc=Adn9_Y2ekt7q6vm2n5N72VzdQ5u3THIVrKECDVlZHnAQ5MKPY95BIMy99Xy0gbdqS9I&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=Ev9-IofuXSRVjULwCP0b3g&oh=00_AfJDd4ZbC6PBlH4kACRaSDd_L4DDNPggoBu5hKzPRl0UXg&oe=682D80FB" width="350" alt="Chicken Ranch Logo">
-       <br>
-        <img class="img-fade" loading="lazy" src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/495188688_1169630371843970_909718641186209204_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=mgim9OobBxgQ7kNvwHyF_oo&_nc_oc=AdkKDvMSTPYLtJwUJdePOSIzVq5BFZJVNkOZRQqCef3rSJ4IMbFoXMMsaxUuYaBAf28&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=1reocuC0xo37xVE2Eb_6iQ&oh=00_AfJzp4msSc8SgjJPbPMJ-_cQTuk3W8wPlMr27Ax0cX1kBA&oe=682D7805" width="350" alt="Fried chicken meal">
-       <br>
-        <img class="img-fade" loading="lazy" src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/494039910_1169630401843967_8765505607506402736_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=chS821nIq9AQ7kNvwFeVU8F&_nc_oc=Adl8jmp2eJZoMVVd1NAytjmKBJgvQ5NrLqHTxb4b4rJI18Wgt8AXu26B2UQRh1b0ETI&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=kAGlVPFLSnzML9Mv6OX9Rg&oh=00_AfIgonB3XQ3BWa2sjnoASOHAB6Vnrzk7-dwsG9kFyW3B8A&oe=682D8226" width="350" alt="Chicken Ranch restaurant branch">
+        <img class="img-fade" loading="lazy"
+            src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/434093627_878501077623569_9082809152095648231_n.png?stp=dst-png_s960x960&_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=9xJetv86M6gQ7kNvwFfxOYy&_nc_oc=Adn9_Y2ekt7q6vm2n5N72VzdQ5u3THIVrKECDVlZHnAQ5MKPY95BIMy99Xy0gbdqS9I&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=Ev9-IofuXSRVjULwCP0b3g&oh=00_AfJDd4ZbC6PBlH4kACRaSDd_L4DDNPggoBu5hKzPRl0UXg&oe=682D80FB"
+            width="350" alt="Chicken Ranch Logo">
+        <br>
+        <img class="img-fade" loading="lazy"
+            src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/495188688_1169630371843970_909718641186209204_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=mgim9OobBxgQ7kNvwHyF_oo&_nc_oc=AdkKDvMSTPYLtJwUJdePOSIzVq5BFZJVNkOZRQqCef3rSJ4IMbFoXMMsaxUuYaBAf28&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=1reocuC0xo37xVE2Eb_6iQ&oh=00_AfJzp4msSc8SgjJPbPMJ-_cQTuk3W8wPlMr27Ax0cX1kBA&oe=682D7805"
+            width="350" alt="Fried chicken meal">
+        <br>
+        <img class="img-fade" loading="lazy"
+            src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/494039910_1169630401843967_8765505607506402736_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=chS821nIq9AQ7kNvwFeVU8F&_nc_oc=Adl8jmp2eJZoMVVd1NAytjmKBJgvQ5NrLqHTxb4b4rJI18Wgt8AXu26B2UQRh1b0ETI&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=kAGlVPFLSnzML9Mv6OX9Rg&oh=00_AfIgonB3XQ3BWa2sjnoASOHAB6Vnrzk7-dwsG9kFyW3B8A&oe=682D8226"
+            width="350" alt="Chicken Ranch restaurant branch">
 
         <h1><u>Chicken Ranch</u></h1>
         <hr />
@@ -420,257 +685,799 @@ body[dir="ltr"] {
                 <p><a href="https://www.instagram.com/chickenranch.eg" target="_blank">Click here</a></p>
             </ul>
         </div>
-        <hr>
-       <div class="section-bubble"><h6>Developed by <a href="https://ronymasr.github.io/my-link/" target="_blank">Ahmed Ramadan</a></h6></div> 
+
+        <div class="section-bubble" id="join-us-bubble">
+            <h2 id="join-title"><span class="icon"><i class="fa-solid fa-user-plus"></i></span></h2>
+            <form id="join-form" class="join-form-grid">
+                <div class="form-group">
+                    <label id="label-name" for="join-name"></label>
+                    <input type="text" id="join-name" name="name" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label id="label-phone" for="join-phone"></label>
+                    <input type="tel" id="join-phone" name="phone" required pattern="[0-9]{8,15}" maxlength="15"
+                        inputmode="numeric" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label id="label-flat" for="join-flat"></label>
+                    <input type="text" id="join-flat" name="flat" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label id="label-building" for="join-building"></label>
+                    <input type="text" id="join-building" name="building" autocomplete="off">
+                </div>
+                <div class="form-group wide">
+                    <label id="label-street" for="join-street"></label>
+                    <input type="text" id="join-street" name="street" autocomplete="off">
+                </div>
+                <div class="form-group wide">
+                    <label id="label-compound" for="join-compound"></label>
+                    <input type="text" id="join-compound" name="compound" autocomplete="off">
+                </div>
+                <div class="form-group wide">
+                    <label id="label-area" for="join-area"></label>
+                    <input type="text" id="join-area" name="area" autocomplete="off">
+                </div>
+                <div class="form-group wide">
+                    <label id="label-branch" for="join-branch"></label>
+                    <select id="join-branch" name="branch">
+                        <option value=""></option>
+                        <option value="branch1"></option>
+                        <option value="branch2"></option>
+                        <option value="branch3"></option>
+                    </select>
+                </div>
+                <div class="form-group full">
+                    <button type="submit" id="join-submit"></button>
+                </div>
+            </form>
+            <div id="join-toast" class="join-toast"></div>
+        </div>
+
+        <!-- فقاعه اطلب الآن -->
+        <div class="section-bubble" id="order-now-bubble">
+            <h2 id="order-title"><span class="icon"><i class="fa-solid fa-basket-shopping"></i></span> <span></span>
+            </h2>
+            <form id="order-form" class="join-form-grid" style="margin-bottom:0;">
+                <div class="form-group wide">
+                    <label id="label-product" for="order-product"></label>
+                    <select id="order-product" name="product" required>
+                        <option value=""></option>
+                        <option value="singleSandwich"></option>
+                        <option value="doubleSandwich"></option>
+                        <option value="twisterSandwich"></option>
+                        <option value="zingerSupreme"></option>
+                        <option value="doubleMeal"></option>
+                        <option value="tripleMeal"></option>
+                        <option value="chicken8"></option>
+                        <option value="chicken12"></option>
+                        <option value="nuggetsMeal"></option>
+                        <option value="rizzo"></option>
+                        <option value="coleslaw"></option>
+                        <option value="friesMedium"></option>
+                        <option value="pepperSauce"></option>
+                        <option value="mixSauce"></option>
+                        <option value="tomeyaSauce"></option>
+                        <option value="honeyMustard"></option>
+                        <option value="cola"></option>
+                        <option value="waterSmall"></option>
+                        <option value="combo"></option>
+                        <option value="strips2"></option>
+                        <option value="strips5"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label id="label-qty" for="order-qty"></label>
+                    <div class="qty-control">
+                        <button type="button" id="qty-minus" class="qty-btn" aria-label="">-</button>
+                        <input type="text" id="order-qty" name="qty" value="1" readonly>
+                        <button type="button" id="qty-plus" class="qty-btn" aria-label="">+</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label id="label-unit-price"></label>
+                    <div id="order-unit-price" style="padding:8px 0 0 0;">--</div>
+                </div>
+                <div class="form-group">
+                    <label id="label-total"></label>
+                    <div id="order-total" style="padding:8px 0 0 0;font-weight:bold;">--</div>
+                </div>
+                <div class="form-group full">
+                    <button type="button" id="add-to-cart"
+                        style="background:#b9314f;color:#fff;padding:10px 38px;border:none;border-radius:8px;font-size:1.1rem;cursor:pointer;font-weight:bold;margin-bottom:8px;"></button>
+                </div>
+            </form>
+            <div id="cart-list" style="margin:18px 0 0 0;"></div>
+            <div style="text-align:center;margin-top:10px;">
+                <button id="order-submit"
+                    style="background:#b9314f;color:#fff;padding:10px 38px;border:none;border-radius:8px;font-size:1.1rem;cursor:pointer;font-weight:bold;">تأكيد الطلب</button>
+            </div>
+            <div id="order-toast" class="join-toast"></div>
+        </div>
+
+        <div class="section-bubble">
+            <h6>Developed by <a href="https://ronymasr.github.io/my-link/" target="_blank">Ahmed Ramadan</a>
+            </h6>
+        </div>
     </div> <!-- نهاية .container -->
-    
+
     <!-- زر العودة للأعلى -->
-<button id="backToTop" title="Back to top">
-  <i class="fa-solid fa-arrow-up"></i>
-</button>
-<!-- زر تبديل الوضع الليلي -->
-<button id="toggle-theme" style="position:fixed;top:18px;left:18px;z-index:3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
-  <i id="theme-icon" class="fa-solid fa-sun"></i>
-</button>
-<!-- زر تكبير الخط -->
-<button id="fontPlus" style="position:fixed;top:18px;right:18px;z-index=3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
-  <i class="fa-solid fa-a"></i>
-</button>
-<!-- زر تغيير اللغة -->
-<button id="langSwitch" style="position:fixed;top:18px;left:70px;z-index=3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.1rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
-  <i class="fa-solid fa-language"></i>
-</button>
+    <button id="backToTop" title="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    <!-- زر تبديل الوضع الليلي -->
+    <button id="toggle-theme"
+        style="position:fixed;top:18px;left:18px;z-index:3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
+        <i id="theme-icon" class="fa-solid fa-sun"></i>
+    </button>
+    <!-- زر تكبير الخط -->
+    <button id="fontPlus"
+        style="position:fixed;top:18px;right:18px;z-index=3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
+        <i class="fa-solid fa-a"></i>
+    </button>
+    <!-- زر تغيير اللغة -->
+    <button id="langSwitch"
+        style="position:fixed;top:18px;left:70px;z-index=3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.1rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
+        <i class="fa-solid fa-language"></i>
+    </button>
 
     <!-- Lightbox overlay -->
-<div id="lightbox-overlay" style="display:none; position:fixed; z-index=3000; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); align-items:center; justify-content:center;">
-  <img id="lightbox-img" src="" alt="Preview" style="max-width:90vw; max-height:90vh; border-radius:18px; box-shadow:0 8px 32px #000a;">
-</div>
+    <div id="lightbox-overlay"
+        style="display:none; position:fixed; z-index=3000; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); align-items:center; justify-content:center;">
+        <img id="lightbox-img" src="" alt="Preview"
+            style="max-width:90vw; max-height:90vh; border-radius:18px; box-shadow:0 8px 32px #000a;">
+    </div>
 
-    <div id="scroll-progress" style="position:fixed;top:0;left:0;height:5px;width:0;background:#b9314f;z-index=3002;transition:width 0.2s;"></div>
+    <div id="scroll-progress"
+        style="position:fixed;top:0;left:0;height:5px;width:0;background:#b9314f;z-index=3002;transition:width 0.2s;">
+    </div>
+
+    <!-- زر مشاركة عائم -->
+    <div id="fab-share-container">
+        <button id="fab-share-btn" title="مشاركة الموقع">
+            <i class="fa-solid fa-share-nodes"></i>
+        </button>
+    </div>
 
     <script>
-document.documentElement.dir = (navigator.language || navigator.userLanguage).startsWith('ar') ? 'rtl' : 'ltr';
-function revealBubblesOnScroll() {
-    const images = document.querySelectorAll('.img-fade');
-    const triggerBottom = window.innerHeight * 0.92;
-    let delay = 0;
-    images.forEach((img, i) => {
-        const imgTop = img.getBoundingClientRect().top;
-        if (imgTop < triggerBottom) {
-            setTimeout(() => img.classList.add('visible'), delay);
-            delay += 120;
-        } else {
-            img.classList.remove('visible');
+        document.documentElement.dir = (navigator.language || navigator.userLanguage).startsWith('ar') ? 'rtl' : 'ltr';
+        function revealBubblesOnScroll() {
+            const images = document.querySelectorAll('.img-fade');
+            const triggerBottom = window.innerHeight * 0.92;
+            let delay = 0;
+            images.forEach((img, i) => {
+                const imgTop = img.getBoundingClientRect().top;
+                if (imgTop < triggerBottom) {
+                    setTimeout(() => img.classList.add('visible'), delay);
+                    delay += 120;
+                } else {
+                    img.classList.remove('visible');
+                }
+            });
         }
-    });
-}
-window.addEventListener('scroll', revealBubblesOnScroll);
-window.addEventListener('load', revealBubblesOnScroll);
+        window.addEventListener('scroll', revealBubblesOnScroll);
+        window.addEventListener('load', revealBubblesOnScroll);
 
-function revealTitlesOnScroll() {
-  document.querySelectorAll('h1, h2').forEach(title => {
-    const top = title.getBoundingClientRect().top;
-    const trigger = window.innerHeight * 0.92;
-    if (top < trigger) {
-      title.classList.add('title-visible');
-    } else {
-      title.classList.remove('title-visible');
-    }
-  });
-}
-window.addEventListener('scroll', revealTitlesOnScroll);
-window.addEventListener('load', revealTitlesOnScroll);
+        function revealTitlesOnScroll() {
+            document.querySelectorAll('h1, h2').forEach(title => {
+                const top = title.getBoundingClientRect().top;
+                const trigger = window.innerHeight * 0.92;
+                if (top < trigger) {
+                    title.classList.add('title-visible');
+                } else {
+                    title.classList.remove('title-visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealTitlesOnScroll);
+        window.addEventListener('load', revealTitlesOnScroll);
 
-// إظهار زر العودة للأعلى عند التمرير لأسفل
-const backToTopBtn = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTopBtn.classList.add('show');
-    } else {
-        backToTopBtn.classList.remove('show');
-    }
-});
+        // إظهار زر العودة للأعلى عند التمرير لأسفل
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
 
-// العودة للأعلى عند النقر على الزر
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
+        // العودة للأعلى عند النقر على الزر
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
-// زر العودة للأعلى
-window.addEventListener('scroll', function() {
-  const btn = document.getElementById('backToTop');
-  if (window.scrollY > 400) {
-    btn.style.display = 'block';
-  } else {
-    btn.style.display = 'none';
-  }
-});
-document.getElementById('backToTop').onclick = function() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-};
+        // زر العودة للأعلى
+        window.addEventListener('scroll', function () {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 400) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        document.getElementById('backToTop').onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
 
 
 
-// Lightbox functionality
-document.querySelectorAll('.img-fade').forEach(img => {
-  img.style.cursor = 'zoom-in';
-  img.addEventListener('click', function() {
-    const overlay = document.getElementById('lightbox-overlay');
-    const lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = this.src;
-    overlay.style.display = 'flex';
-  });
-});
-document.getElementById('lightbox-overlay').addEventListener('click', function(e) {
-  if (e.target === this) this.style.display = 'none';
-});
+        // Lightbox functionality
+        document.querySelectorAll('.img-fade').forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', function () {
+                const overlay = document.getElementById('lightbox-overlay');
+                const lightboxImg = document.getElementById('lightbox-img');
+                lightboxImg.src = this.src;
+                overlay.style.display = 'flex';
+            });
+        });
+        document.getElementById('lightbox-overlay').addEventListener('click', function (e) {
+            if (e.target === this) this.style.display = 'none';
+        });
 
-// تكبير وتصغير الخط
-const fontBtn = document.getElementById('fontPlus');
-let fontSize = 1;
-fontBtn.onclick = function() {
-  fontSize += 0.1;
-  if (fontSize > 1.5) fontSize = 1; // يرجع للحجم الأصلي بعد التكبير
-  document.body.style.fontSize = fontSize + "em";
-};
+        // تكبير وتصغير الخط
+        const fontBtn = document.getElementById('fontPlus');
+        let fontSize = 1;
+        fontBtn.onclick = function () {
+            fontSize += 0.1;
+            if (fontSize > 1.5) fontSize = 1; // يرجع للحجم الأصلي بعد التكبير
+            document.body.style.fontSize = fontSize + "em";
+        };
 
-// تحديث شريط تقدم التمرير
-function updateScrollProgress() {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight;
-  const winHeight = window.innerHeight;
-  const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
-  document.getElementById('scroll-progress').style.width = scrollPercent + '%';
-}
-window.addEventListener('scroll', updateScrollProgress);
-window.addEventListener('load', updateScrollProgress);
+        // تحديث شريط تقدم التمرير
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight;
+            const winHeight = window.innerHeight;
+            const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+            document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+        }
+        window.addEventListener('scroll', updateScrollProgress);
+        window.addEventListener('load', updateScrollProgress);
 
-const themeBtn = document.getElementById('toggle-theme');
-const themeIcon = document.getElementById('theme-icon');
-function setTheme(dark) {
-  if (dark) {
-    document.body.classList.add('dark-mode');
-    themeIcon.className = 'fa-solid fa-sun';
-    localStorage.setItem('theme', 'dark');
-  } else {
-    document.body.classList.remove('dark-mode');
-    themeIcon.className = 'fa-solid fa-moon';
-    localStorage.setItem('theme', 'light');
-  }
-}
-themeBtn.onclick = function() {
-  setTheme(!document.body.classList.contains('dark-mode'));
-};
-window.addEventListener('DOMContentLoaded', function() {
-  setTheme(localStorage.getItem('theme') === 'dark');
-});
+        const themeBtn = document.getElementById('toggle-theme');
+        const themeIcon = document.getElementById('theme-icon');
+        function setTheme(dark) {
+            if (dark) {
+                document.body.classList.add('dark-mode');
+                themeIcon.className = 'fa-solid fa-sun';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeIcon.className = 'fa-solid fa-moon';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        themeBtn.onclick = function () {
+            setTheme(!document.body.classList.contains('dark-mode'));
+        };
+        window.addEventListener('DOMContentLoaded', function () {
+            setTheme(localStorage.getItem('theme') === 'dark');
+        });
 
-window.addEventListener('scroll', function() {
-  const footer = document.querySelector('footer');
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 20) {
-    footer.classList.add('visible');
-  } else {
-    footer.classList.remove('visible');
-  }
-});
+        window.addEventListener('scroll', function () {
+            const footer = document.querySelector('footer');
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 20) {
+                footer.classList.add('visible');
+            } else {
+                footer.classList.remove('visible');
+            }
+        });
 
-const langBtn = document.getElementById('langSwitch');
-const translations = {
-  en: {
-    title: "Chicken Ranch",
-    who: "1- Who are we?",
-    whoText: "We are a fast food restaurant serving fried chicken and sandwiches.",
-    why: "2- Why us?",
-    whyText: "Because we are distinguished by the best raw materials and the best types of chicken.<br>We provide excellent service, great speed in preparing orders,<br>and we do not allow any error in the order.<br>We care very much about cleanliness and preserving the safety of the customer.",
-    branches: "3- Our branches:",
-    branch1: "Branch 1",
-    branch1Addr: "- El Mohandseen, Ahmed Oraby.st",
-    branch2: "Branch 2",
-    branch2Addr: "- Golden Walk Strip, Waslet Dahshur Rd, Second Al Sheikh Zayed",
-    branch3: "Branch 3",
-    branch3Addr: "- Chilll Out Gas Station, Hyde Park Square, New Cairo<br>Next to the Administrative Control Compound",
-    contact: "4- Contact us:",
-    facebook: "Facebook page:",
-    instagram: "Instagram page:",
-    click: "Click here",
-    copyright: "Copyright 2025 Ahmed Ramadan. All rights reserved."
-  },
-  ar: {
-    title: "تشيكن رانش",
-    who: "١- من نحن؟",
-    whoText: "نحن مطعم وجبات سريعة متخصص في تقديم الدجاج المقلي والسندويتشات.",
-    why: "٢- لماذا نحن؟",
-    whyText: "لأننا نتميز بأفضل الخامات وأجود أنواع الدجاج.<br>نقدم خدمة ممتازة وسرعة كبيرة في تجهيز الطلبات،<br>ولا نسمح بأي خطأ في الطلب.<br>نهتم كثيرًا بالنظافة والحفاظ على سلامة العميل.",
-    branches: "٣- فروعنا:",
-    branch1: "الفرع ١",
-    branch1Addr: "- المهندسين، شارع أحمد عرابي",
-    branch2: "الفرع ٢",
-    branch2Addr: "- جولدن ووك ستريب، وصلة دهشور، الشيخ زايد",
-    branch3: "الفرع ٣",
-    branch3Addr: "- محطة بنزين شيل أوت، هايد بارك سكوير، القاهرة الجديدة<br>بجوار مجمع الرقابة الإدارية",
-    contact: "٤- تواصل معنا:",
-    facebook: "صفحة فيسبوك:",
-    instagram: "صفحة انستجرام:",
-    click: "اضغط هنا",
-    copyright: "جميع الحقوق محفوظة © 2025 أحمد رمضان"
-  }
-};
+        const langBtn = document.getElementById('langSwitch');
+        const translations = {
+            en: {
+                title: "Chicken Ranch",
+                who: "1- Who are we?",
+                whoText: "We are a fast food restaurant serving fried chicken and sandwiches.",
+                why: "2- Why us?",
+                whyText: "Because we are distinguished by the best raw materials and the best types of chicken.<br>We provide excellent service, great speed in preparing orders,<br>and we do not allow any error in the order.<br>We care very much about cleanliness and preserving the safety of the customer.",
+                branches: "3- Our branches:",
+                branch1: "Branch 1",
+                branch1Addr: "- El Mohandseen, Ahmed Oraby.st",
+                branch2: "Branch 2",
+                branch2Addr: "- Golden Walk Strip, Waslet Dahshur Rd, Second Al Sheikh Zayed",
+                branch3: "Branch 3",
+                branch3Addr: "- Chilll Out Gas Station, Hyde Park Square, New Cairo<br>Next to the Administrative Control Compound",
+                contact: "4- Contact us:",
+                facebook: "Facebook page:",
+                instagram: "Instagram page:",
+                click: "Click here",
+                copyright: "Copyright 2025 Ahmed Ramadan. All rights reserved."
+            },
+            ar: {
+                title: "تشيكن رانش",
+                who: "١- من نحن؟",
+                whoText: "نحن مطعم وجبات سريعة متخصص في تقديم الدجاج المقلي والسندويتشات.",
+                why: "٢- لماذا نحن؟",
+                whyText: "لأننا نتميز بأفضل الخامات وأجود أنواع الدجاج.<br>نقدم خدمة ممتازة وسرعة كبيرة في تجهيز الطلبات،<br>ولا نسمح بأي خطأ في الطلب.<br>نهتم كثيرًا بالنظافة والحفاظ على سلامة العميل.",
+                branches: "٣- فروعنا:",
+                branch1: "الفرع ١",
+                branch1Addr: "- المهندسين، شارع أحمد عرابي",
+                branch2: "الفرع ٢",
+                branch2Addr: "- جولدن ووك ستريب، وصلة دهشور، الشيخ زايد",
+                branch3: "الفرع ٣",
+                branch3Addr: "- محطة بنزين شيل أوت، هايد بارك سكوير، القاهرة الجديدة<br>بجوار مجمع الرقابة الإدارية",
+                contact: "٤- تواصل معنا:",
+                facebook: "صفحة فيسبوك:",
+                instagram: "صفحة انستجرام:",
+                click: "اضغط هنا",
+                copyright: "جميع الحقوق محفوظة © 2025 أحمد رمضان"
+            }
+        };
 
-langBtn.onclick = function() {
-  let lang = document.documentElement.lang === 'ar' ? 'en' : 'ar';
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        langBtn.onclick = function () {
+            let lang = document.documentElement.lang === 'ar' ? 'en' : 'ar';
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
 
-  // تغيير النصوص
-  document.querySelector('h1 u').textContent = translations[lang].title;
-  document.querySelectorAll('.section-bubble h2')[0].childNodes[0].nodeValue = translations[lang].who + " ";
-  document.querySelectorAll('.section-bubble p')[0].innerHTML = translations[lang].whoText;
-  document.querySelectorAll('.section-bubble h2')[1].childNodes[0].nodeValue = translations[lang].why;
-  document.querySelectorAll('.section-bubble p')[1].innerHTML = translations[lang].whyText;
-  document.querySelectorAll('.section-bubble h2')[2].childNodes[0].nodeValue = translations[lang].branches;
-  let ul = document.querySelectorAll('.section-bubble ul')[0];
-  ul.children[0].textContent = translations[lang].branch1;
-  ul.children[1].innerHTML = translations[lang].branch1Addr + `<br><a href="https://maps.app.goo.gl/8K6XMKz2jmTpvsRT9" target="_blank">${translations[lang].click}</a>`;
-  ul.children[2].textContent = translations[lang].branch2;
-  ul.children[3].innerHTML = translations[lang].branch2Addr + `<br><a href="https://maps.app.goo.gl/c7iVngVosDxzPxvZ7" target="_blank" class="pulse">${translations[lang].click}</a>`;
-  ul.children[4].textContent = translations[lang].branch3;
-  ul.children[5].innerHTML = translations[lang].branch3Addr + `<br><a href="https://maps.app.goo.gl/7smZTeTW4e3NcXWd7" target="_blank" class="pulse">${translations[lang].click}</a>`;
+            // تغيير النصوص
+            document.querySelector('h1 u').textContent = translations[lang].title;
+            document.querySelectorAll('.section-bubble h2')[0].childNodes[0].nodeValue = translations[lang].who + " ";
+            document.querySelectorAll('.section-bubble p')[0].innerHTML = translations[lang].whoText;
+            document.querySelectorAll('.section-bubble h2')[1].childNodes[0].nodeValue = translations[lang].why;
+            document.querySelectorAll('.section-bubble p')[1].innerHTML = translations[lang].whyText;
+            document.querySelectorAll('.section-bubble h2')[2].childNodes[0].nodeValue = translations[lang].branches;
+            let ul = document.querySelectorAll('.section-bubble ul')[0];
+            ul.children[0].textContent = translations[lang].branch1;
+            ul.children[1].innerHTML = translations[lang].branch1Addr + `<br><a href="https://maps.app.goo.gl/8K6XMKz2jmTpvsRT9" target="_blank">${translations[lang].click}</a>`;
+            ul.children[2].textContent = translations[lang].branch2;
+            ul.children[3].innerHTML = translations[lang].branch2Addr + `<br><a href="https://maps.app.goo.gl/c7iVngVosDxzPxvZ7" target="_blank" class="pulse">${translations[lang].click}</a>`;
+            ul.children[4].textContent = translations[lang].branch3;
+            ul.children[5].innerHTML = translations[lang].branch3Addr + `<br><a href="https://maps.app.goo.gl/7smZTeTW4e3NcXWd7" target="_blank" class="pulse">${translations[lang].click}</a>`;
 
-  document.querySelectorAll('.section-bubble h2')[3].childNodes[0].nodeValue = translations[lang].contact;
-  let ul2 = document.querySelectorAll('.section-bubble ul')[1];
-  ul2.children[0].textContent = translations[lang].facebook;
-  ul2.children[1].innerHTML = `<a href="https://www.facebook.com/Chickenranch.egy" target="_blank">${translations[lang].click}</a>`;
-  ul2.children[2].textContent = translations[lang].instagram;
-  ul2.children[3].innerHTML = `<a href="https://www.instagram.com/chickenranch.eg" target="_blank">${translations[lang].click}</a>`;
+            document.querySelectorAll('.section-bubble h2')[3].childNodes[0].nodeValue = translations[lang].contact;
+            let ul2 = document.querySelectorAll('.section-bubble ul')[1];
+            ul2.children[0].textContent = translations[lang].facebook;
+            ul2.children[1].innerHTML = `<a href="https://www.facebook.com/Chickenranch.egy" target="_blank">${translations[lang].click}</a>`;
+            ul2.children[2].textContent = translations[lang].instagram;
+            ul2.children[3].innerHTML = `<a href="https://www.instagram.com/chickenranch.eg" target="_blank">${translations[lang].click}</a>`;
 
-  document.querySelector('footer p').textContent = translations[lang].copyright;
-};
+            document.querySelector('footer p').textContent = translations[lang].copyright;
+        };
+
+        // زر مشاركة عائم
+        document.getElementById('fab-share-btn').onclick = function () {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: 'تعرف على مطعم تشيكن رانش!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('تم نسخ رابط الموقع!');
+            }
+        };
+
+        // نصوص النموذج حسب اللغة
+        function setJoinFormLang(lang) {
+            const joinTexts = {
+                en: {
+                    title: "5- Join Us",
+                    name: "Name:",
+                    phone: "Phone Number:",
+                    flat: "Flat No.:",
+                    building: "Building No.:",
+                    street: "Street Name:",
+                    compound: "Compound Name:",
+                    area: "Area Name:",
+                    branch: "Nearest Branch:",
+                    branch1: "Branch 1 - El Mohandseen",
+                    branch2: "Branch 2 - Sheikh Zayed",
+                    branch3: "Branch 3 - New Cairo",
+                    submit: "Save Data",
+                    toast: "Your data has been saved successfully!"
+                },
+                ar: {
+                    title: "٥- انضم إلينا",
+                    name: "الاسم:",
+                    phone: "رقم الهاتف:",
+                    flat: "رقم الشقة:",
+                    building: "رقم العمارة:",
+                    street: "اسم الشارع:",
+                    compound: "اسم الكمباوند:",
+                    area: "اسم المنطقة:",
+                    branch: "أقرب فرع:",
+                    branch1: "الفرع ١ - المهندسين",
+                    branch2: "الفرع ٢ - الشيخ زايد",
+                    branch3: "الفرع ٣ - القاهرة الجديدة",
+                    submit: "حفظ البيانات",
+                    toast: "تم حفظ بياناتك بنجاح!"
+                }
+            };
+            const t = joinTexts[lang];
+            document.getElementById('join-title').innerHTML = `<span class="icon"><i class="fa-solid fa-user-plus"></i></span> ${t.title}`;
+            document.getElementById('label-name').textContent = t.name;
+            document.getElementById('label-phone').textContent = t.phone;
+            document.getElementById('label-flat').textContent = t.flat;
+            document.getElementById('label-building').textContent = t.building;
+            document.getElementById('label-street').textContent = t.street;
+            document.getElementById('label-compound').textContent = t.compound;
+            document.getElementById('label-area').textContent = t.area;
+            document.getElementById('label-branch').textContent = t.branch;
+            document.querySelector('#join-branch option[value=""]').textContent = lang === 'ar' ? "اختر الفرع" : "Choose branch";
+            document.querySelector('#join-branch option[value="branch1"]').textContent = t.branch1;
+            document.querySelector('#join-branch option[value="branch2"]').textContent = t.branch2;
+            document.querySelector('#join-branch option[value="branch3"]').textContent = t.branch3;
+            document.getElementById('join-submit').textContent = t.submit;
+        }
+        function getCurrentLang() {
+            return document.documentElement.lang === 'ar' ? 'ar' : 'en';
+        }
+        setJoinFormLang(getCurrentLang());
+
+        // تحديث لغة الفقاعة عند تغيير لغة الموقع
+        if (typeof langBtn !== "undefined") {
+            langBtn.addEventListener('click', function () {
+                setTimeout(() => setJoinFormLang(getCurrentLang()), 100);
+            });
+        }
+
+        // منع إدخال غير الأرقام في رقم الهاتف
+        document.getElementById('join-phone').addEventListener('input', function () {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        // رسالة منبثقة عند الحفظ
+        document.getElementById('join-form').onsubmit = function(e) {
+            e.preventDefault();
+
+            // اجمع البيانات من الحقول
+            const name = document.getElementById('join-name').value;
+            const phone = document.getElementById('join-phone').value;
+            const flat = document.getElementById('join-flat').value;
+            const building = document.getElementById('join-building').value;
+            const street = document.getElementById('join-street').value;
+            const compound = document.getElementById('join-compound').value;
+            const area = document.getElementById('join-area').value;
+            const branch = document.getElementById('join-branch').value;
+
+            // استخدم المعرفات الصحيحة لكل حقل
+            const formData = new FormData();
+            formData.append("entry.2005620554", name);
+            formData.append("entry.1045781291", phone);
+            formData.append("entry.1166974658", flat);
+            formData.append("entry.839337160", building);
+            formData.append("entry.1065046570", street);
+            formData.append("entry.2116175246", compound);
+            formData.append("entry.2097276667", area);
+            formData.append("entry.1606082596", branch);
+
+            // رابط Google Form الخاص بك (يجب أن ينتهي بـ /formResponse)
+            fetch("https://docs.google.com/forms/d/e/1FAIpQLSdxnK64JmpYRz1BzUOt4g1Qn1ktfbZWAB4jJVH-jBLCD-l4bw/formResponse", {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            });
+
+            // رسالة نجاح
+            const lang = getCurrentLang();
+            const toast = document.getElementById('join-toast');
+            toast.textContent = lang === 'ar' ? 'تم حفظ بياناتك بنجاح!' : 'Your data has been saved successfully!';
+            toast.style.display = 'block';
+            toast.style.opacity = '0.95';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => { toast.style.display = 'none'; }, 400);
+            }, 5000);
+            this.reset();
+        };
+
+        // أسعار المنتجات
+        const menuPrices = {
+            singleSandwich: 148,
+            doubleSandwich: 188,
+            twisterSandwich: 114,
+            zingerSupreme: 154,
+            doubleMeal: 163,
+            tripleMeal: 262,
+            chicken8: 587,
+            chicken12: 855,
+            nuggetsMeal: 125,
+            rizzo: 97,
+            coleslaw: 56,
+            friesMedium: 64,
+            pepperSauce: 29,
+            mixSauce: 29,
+            tomeyaSauce: 29,
+            honeyMustard: 29,
+            cola: 29,
+            waterSmall: 17,
+            combo: 91,
+            strips2: 114,
+            strips5: 285
+        };
+
+        // نصوص المنتجات حسب اللغة
+        function setOrderFormLang(lang) {
+            const orderTexts = {
+                en: {
+                    title: "Order Now",
+                    product: "Choose Product:",
+                    singleSandwich: "Single Sandwich",
+                    doubleSandwich: "Double Sandwich",
+                    twisterSandwich: "Twister Sandwich",
+                    zingerSupreme: "Zinger Supreme Sandwich",
+                    doubleMeal: "Double Meal",
+                    tripleMeal: "Triple Meal",
+                    chicken8: "8-Piece Chicken",
+                    chicken12: "12-Piece Chicken",
+                    nuggetsMeal: "Nuggets Meal",
+                    rizzo: "Rizzo",
+                    coleslaw: "Coleslaw",
+                    friesMedium: "Fries (Medium)",
+                    pepperSauce: "Pepper Sauce",
+                    mixSauce: "Mix Sauce",
+                    tomeyaSauce: "Tomeya Sauce",
+                    honeyMustard: "Honey Mustard",
+                    cola: "Cola",
+                    waterSmall: "Mineral Water (Small)",
+                    combo: "Combo (Fries + Cola)",
+                    strips2: "2 Strips",
+                    strips5: "5 Strips",
+                    qty: "Quantity:",
+                    unitPrice: "Unit Price:",
+                    total: "Total:",
+                    add: "Add to Cart",
+                    submit: "Place Order",
+                    toast: "Your order has been received! We will contact you soon.",
+                    choose: "Choose from menu",
+                    currency: "EGP",
+                    cart: "Your Cart",
+                    empty: "Cart is empty.",
+                    remove: "Remove"
+                },
+                ar: {
+                    title: "اطلب الآن",
+                    product: "اختر المنتج:",
+                    singleSandwich: "سنجل سندوتش",
+                    doubleSandwich: "دوبل سندوتش",
+                    twisterSandwich: "تويستر سندوتش",
+                    zingerSupreme: "زنجر سوبريم سندوتش",
+                    doubleMeal: "دوبل ميل",
+                    tripleMeal: "تريبل ميل",
+                    chicken8: "8 قطع دجاج",
+                    chicken12: "12 قطعة دجاج",
+                    nuggetsMeal: "ناجتس ميل",
+                    rizzo: "ريزو",
+                    coleslaw: "كلو سلو",
+                    friesMedium: "فرايز ميديام",
+                    pepperSauce: "صوص بيبر",
+                    mixSauce: "صوص ميكس",
+                    tomeyaSauce: "توميه",
+                    honeyMustard: "هاني ماستر",
+                    cola: "كولا",
+                    waterSmall: "مياه معدنيه صغيره",
+                    combo: "كومبو (فرايز + كولا)",
+                    strips2: "2 قطعة ستربس",
+                    strips5: "5 قطعة ستربس",
+                    qty: "الكمية:",
+                    unitPrice: "سعر الوحدة:",
+                    total: "الإجمالي:",
+                    add: "إضافة إلى السلة",
+                    submit: "تأكيد الطلب",
+                    toast: "تم استلام طلبك بنجاح! سيتم التواصل معك قريباً.",
+                    choose: "اختر من القائمة",
+                    currency: "جنيه",
+                    cart: "سلة الطلبات",
+                    empty: "السلة فارغة.",
+                    remove: "حذف"
+                }
+            };
+            const t = orderTexts[lang];
+            document.querySelector('#order-title span:last-child').textContent = t.title;
+            document.getElementById('label-product').textContent = t.product;
+            document.querySelector('#order-product option[value=""]').textContent = t.choose;
+            Object.keys(menuPrices).forEach(key => {
+                const opt = document.querySelector(`#order-product option[value="${key}"]`);
+                if (opt) opt.textContent = t[key] + " - " + menuPrices[key] + " " + t.currency;
+            });
+            document.getElementById('label-qty').textContent = t.qty;
+            document.getElementById('label-unit-price').textContent = t.unitPrice;
+            document.getElementById('label-total').textContent = t.total;
+            document.getElementById('add-to-cart').textContent = t.add;
+            document.getElementById('order-submit').textContent = t.submit;
+            document.getElementById('qty-plus').setAttribute('aria-label', lang === 'ar' ? 'زيادة الكمية' : 'Increase quantity');
+document.getElementById('qty-minus').setAttribute('aria-label', lang === 'ar' ? 'نقص الكمية' : 'Decrease quantity');
+            renderCart();
+            updateOrderPrice();
+        }
+        function getCurrentLang() {
+            return document.documentElement.lang === 'ar' ? 'ar' : 'en';
+        }
+
+        // تحديث السعر والإجمالي
+        function updateOrderPrice() {
+            const lang = getCurrentLang();
+            const t = { en: { currency: "EGP" }, ar: { currency: "جنيه" } }[lang];
+            const product = document.getElementById('order-product').value;
+            const qty = parseInt(document.getElementById('order-qty').value) || 1;
+            const unitPrice = menuPrices[product] || 0;
+            document.getElementById('order-unit-price').textContent = unitPrice ? unitPrice + " " + t.currency : "--";
+            document.getElementById('order-total').textContent = unitPrice ? (unitPrice * qty) + " " + t.currency : "--";
+        }
+        document.getElementById('order-product').addEventListener('change', updateOrderPrice);
+        document.getElementById('order-qty').addEventListener('input', updateOrderPrice);
+
+        // كود أزرار زيادة/نقص الكمية
+        const qtyInput = document.getElementById('order-qty');
+        document.getElementById('qty-plus').onclick = function () {
+            let val = parseInt(qtyInput.value) || 1;
+            qtyInput.value = val + 1;
+            updateOrderPrice();
+        };
+        document.getElementById('qty-minus').onclick = function () {
+            let val = parseInt(qtyInput.value) || 1;
+            if (val > 1) qtyInput.value = val - 1;
+            updateOrderPrice();
+        };
+
+        // لا تستخدم event 'input' على order-qty بعد الآن
+
+        // السلة
+        let cart = [];
+        function renderCart() {
+            const lang = getCurrentLang();
+            const t = {
+                en: {
+                    cart: "Your Cart",
+                    empty: "Cart is empty.",
+                    remove: "Remove",
+                    currency: "EGP",
+                    total: "Total" // أضف هذا السطر
+                },
+                ar: {
+                    cart: "سلة الطلبات",
+                    empty: "السلة فارغة.",
+                    remove: "حذف",
+                    currency: "جنيه",
+                    total: "الإجمالي" // أضف هذا السطر
+                }
+            }[lang];
+            let html = `<h3 style="margin-bottom:10px;font-size:1.1rem;">${t.cart}</h3>`;
+            if (cart.length === 0) {
+                html += `<div style="color:#b9314f;text-align:center;">${t.empty}</div>`;
+            } else {
+                html += `<ul style="padding:0;list-style:none;">`;
+                cart.forEach((item, i) => {
+                    html += `<li style="margin-bottom:6px;">
+                <span style="font-weight:bold;">${item.name}</span>
+                × <span>${item.qty}</span>
+                = <span style="color:#b9314f;">${item.total} ${t.currency}</span>
+                <button onclick="removeCartItem(${i})" style="margin-right:8px;background:#fff0f3;color:#b9314f;border:none;border-radius:6px;padding:2px 10px;cursor:pointer;font-size:0.95em;">${t.remove}</button>
+            </li>`;
+                });
+                html += `</ul>`;
+                const total = cart.reduce((sum, item) => sum + item.total, 0);
+                html += `<div style="margin-top:8px;font-weight:bold;">${t.total}: <span style="color:#b9314f;">${total} ${t.currency}</span></div>`;
+            }
+            document.getElementById('cart-list').innerHTML = html;
+        }
+        window.removeCartItem = function(idx) {
+            cart.splice(idx, 1);
+            renderCart();
+        };
+
+        // إضافة للسلة
+        document.getElementById('add-to-cart').onclick = function () {
+            const product = document.getElementById('order-product').value;
+            const qty = parseInt(document.getElementById('order-qty').value) || 1;
+            if (!product || qty < 1) return;
+            const lang = getCurrentLang();
+            const t = {
+                en: {
+                    singleSandwich: "Single Sandwich",
+                    doubleSandwich: "Double Sandwich",
+                    twisterSandwich: "Twister Sandwich",
+                    zingerSupreme: "Zinger Supreme Sandwich",
+                    doubleMeal: "Double Meal",
+                    tripleMeal: "Triple Meal",
+                    chicken8: "8-Piece Chicken",
+                    chicken12: "12-Piece Chicken",
+                    nuggetsMeal: "Nuggets Meal",
+                    rizzo: "Rizzo",
+                    coleslaw: "Coleslaw",
+                    friesMedium: "Fries (Medium)",
+                    pepperSauce: "Pepper Sauce",
+                    mixSauce: "Mix Sauce",
+                    tomeyaSauce: "Tomeya Sauce",
+                    honeyMustard: "Honey Mustard",
+                    cola: "Cola",
+                    waterSmall: "Mineral Water (Small)",
+                    combo: "Combo (Fries + Cola)"
+                },
+                ar: {
+                    singleSandwich: "سنجل سندوتش",
+                    doubleSandwich: "دوبل سندوتش",
+                    twisterSandwich: "تويستر سندوتش",
+                    zingerSupreme: "زنجر سوبريم سندوتش",
+                    doubleMeal: "دوبل ميل",
+                    tripleMeal: "تريبل ميل",
+                    chicken8: "8 قطع دجاج",
+                    chicken12: "12 قطعة دجاج",
+                    nuggetsMeal: "ناجتس ميل",
+                    rizzo: "ريزو",
+                    coleslaw: "كلو سلو",
+                    friesMedium: "فرايز ميديام",
+                    pepperSauce: "صوص بيبر",
+                    mixSauce: "صوص ميكس",
+                    tomeyaSauce: "توميه",
+                    honeyMustard: "هاني ماستر",
+                    cola: "كولا",
+                    waterSmall: "مياه معدنيه صغيره",
+                    combo: "كومبو (فرايز + كولا)"
+                }
+            }[lang];
+            const name = t[product];
+            const unit = menuPrices[product];
+            const total = unit * qty;
+            cart.push({ name, qty, total });
+            renderCart();
+            document.getElementById('order-form').reset();
+            updateOrderPrice();
+        };
+
+        // تأكيد الطلب
+        document.getElementById('order-submit').onclick = function () {
+            const lang = getCurrentLang();
+            const toast = document.getElementById('order-toast');
+            if (cart.length === 0) {
+                toast.textContent = lang === 'ar'
+                    ? "من فضلك أضف منتجات للسلة أولاً."
+                    : "Please add items to the cart first.";
+            } else {
+                toast.textContent = lang === 'ar'
+                    ? "تم استلام طلبك بنجاح! سيتم التواصل معك قريباً."
+                    : "Your order has been received! We will contact you soon.";
+                cart = [];
+                renderCart();
+            }
+            toast.style.display = 'block';
+            toast.style.opacity = '0.95';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => { toast.style.display = 'none'; }, 400);
+            }, 5000);
+        };
+
+        // دعم تغيير اللغة تلقائياً
+        if (typeof langBtn !== "undefined") {
+            langBtn.addEventListener('click', function () {
+                setTimeout(() => setOrderFormLang(getCurrentLang()), 100);
+            });
+        }
+
+        // تفعيل اللغة عند التحميل
+        setOrderFormLang(getCurrentLang());
     </script>
-<script>
-window.addEventListener('load', function() {
-  document.getElementById('loader').classList.add('hide');
-  setTimeout(() => {
-    document.getElementById('loader').style.display = 'none';
-  }, 0); // ← هنا تم زيادة المدة
-});
-</script>
-<footer>
-  <p>Copyright 2025 Ahmed Ramadan. All rights reserved.</p>
-</footer>
-<!-- رسالة الترحيب -->
-<div id="welcome-msg" style="position:fixed;top:70px;right:20px;z-index:4000;background:#fff0f3;color:#7b112c;padding:12px 22px;border-radius:12px;box-shadow:0 2px 8px #b9314f22;display:none;">
-  Welcome to Chicken Ranch!
-</div>
-<script>
-window.addEventListener('DOMContentLoaded', function() {
-  const msg = document.getElementById('welcome-msg');
-  msg.style.display = 'block';
-  setTimeout(() => { msg.style.display = 'none'; }, 3500);
-});
-</script>
+    <script>
+        window.addEventListener('load', function () {
+            document.getElementById('loader').classList.add('hide');
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+            }, 0); // ← هنا تم زيادة المدة
+        });
+    </script>
+    <footer>
+        <p>Copyright 2025 Ahmed Ramadan. All rights reserved.</p>
+    </footer>
+    <!-- رسالة الترحيب -->
+    <div id="welcome-msg"
+        style="position:fixed;top:70px;right:20px;z-index:4000;background:#fff0f3;color:#7b112c;padding:12px 22px;border-radius:12px;box-shadow:0 2px 8px #b9314f22;display:none;">
+        Welcome to Chicken Ranch!
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const msg = document.getElementById('welcome-msg');
+            msg.style.display = 'block';
+            setTimeout(() => { msg.style.display = 'none'; }, 3500);
+        });
+    </script>
 </body>
 
 </html>
