@@ -685,10 +685,11 @@
                 <p><a href="https://www.instagram.com/chickenranch.eg" target="_blank">Click here</a></p>
             </ul>
         </div>
+        
 
         <div class="section-bubble" id="join-us-bubble">
             <h2 id="join-title"><span class="icon"><i class="fa-solid fa-user-plus"></i></span></h2>
-            <form id="join-form" class="join-form-grid">
+            <form id="join-form" class="join-form-grid" action="/save_customer.php" method="POST">
                 <div class="form-group">
                     <label id="label-name" for="join-name"></label>
                     <input type="text" id="join-name" name="name" required autocomplete="off">
@@ -1126,36 +1127,6 @@
         // رسالة منبثقة عند الحفظ
         document.getElementById('join-form').onsubmit = function(e) {
             e.preventDefault();
-
-            // اجمع البيانات من الحقول
-            const name = document.getElementById('join-name').value;
-            const phone = document.getElementById('join-phone').value;
-            const flat = document.getElementById('join-flat').value;
-            const building = document.getElementById('join-building').value;
-            const street = document.getElementById('join-street').value;
-            const compound = document.getElementById('join-compound').value;
-            const area = document.getElementById('join-area').value;
-            const branch = document.getElementById('join-branch').value;
-
-            // استخدم المعرفات الصحيحة لكل حقل
-            const formData = new FormData();
-            formData.append("entry.2005620554", name);
-            formData.append("entry.1045781291", phone);
-            formData.append("entry.1166974658", flat);
-            formData.append("entry.839337160", building);
-            formData.append("entry.1065046570", street);
-            formData.append("entry.2116175246", compound);
-            formData.append("entry.2097276667", area);
-            formData.append("entry.1606082596", branch);
-
-            // رابط Google Form الخاص بك (يجب أن ينتهي بـ /formResponse)
-            fetch("https://docs.google.com/forms/d/e/1FAIpQLSdxnK64JmpYRz1BzUOt4g1Qn1ktfbZWAB4jJVH-jBLCD-l4bw/formResponse", {
-                method: "POST",
-                mode: "no-cors",
-                body: formData
-            });
-
-            // رسالة نجاح
             const lang = getCurrentLang();
             const toast = document.getElementById('join-toast');
             toast.textContent = lang === 'ar' ? 'تم حفظ بياناتك بنجاح!' : 'Your data has been saved successfully!';
