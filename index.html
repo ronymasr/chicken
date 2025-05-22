@@ -616,7 +616,17 @@
             color: #e3e3e3;
         }
     </style>
-
+   <script src="Mail.js" type="text/javascript"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "Q6vR3vjyS6-h5YJA6",
+      });
+   })();
+</script>
 </head>
 
 
@@ -685,7 +695,7 @@
                 <p><a href="https://www.instagram.com/chickenranch.eg" target="_blank">Click here</a></p>
             </ul>
         </div>
-        
+
         <div>
             <h3>ملاحظات : الجزء السفلي لا يعمل. مازال تحت الانشاء. شكرا لزيارتكم. </h3>
         </div>
@@ -794,7 +804,8 @@
             <div id="cart-list" style="margin:18px 0 0 0;"></div>
             <div style="text-align:center;margin-top:10px;">
                 <button id="order-submit"
-                    style="background:#b9314f;color:#fff;padding:10px 38px;border:none;border-radius:8px;font-size:1.1rem;cursor:pointer;font-weight:bold;">تأكيد الطلب</button>
+                    style="background:#b9314f;color:#fff;padding:10px 38px;border:none;border-radius:8px;font-size:1.1rem;cursor:pointer;font-weight:bold;">تأكيد
+                    الطلب</button>
             </div>
             <div id="order-toast" class="join-toast"></div>
         </div>
@@ -804,7 +815,7 @@
             </h6>
         </div>
 
-       
+
     </div> <!-- نهاية .container -->
 
     <!-- زر العودة للأعلى -->
@@ -1112,6 +1123,7 @@
             document.querySelector('#join-branch option[value="branch3"]').textContent = t.branch3;
             document.getElementById('join-submit').textContent = t.submit;
         }
+        
         function getCurrentLang() {
             return document.documentElement.lang === 'ar' ? 'ar' : 'en';
         }
@@ -1130,7 +1142,7 @@
         });
 
         // رسالة منبثقة عند الحفظ
-        document.getElementById('join-form').onsubmit = function(e) {
+        document.getElementById('join-form').onsubmit = function (e) {
             e.preventDefault();
             const lang = getCurrentLang();
             const toast = document.getElementById('join-toast');
@@ -1259,7 +1271,7 @@
             document.getElementById('add-to-cart').textContent = t.add;
             document.getElementById('order-submit').textContent = t.submit;
             document.getElementById('qty-plus').setAttribute('aria-label', lang === 'ar' ? 'زيادة الكمية' : 'Increase quantity');
-document.getElementById('qty-minus').setAttribute('aria-label', lang === 'ar' ? 'نقص الكمية' : 'Decrease quantity');
+            document.getElementById('qty-minus').setAttribute('aria-label', lang === 'ar' ? 'نقص الكمية' : 'Decrease quantity');
             renderCart();
             updateOrderPrice();
         }
@@ -1334,7 +1346,7 @@ document.getElementById('qty-minus').setAttribute('aria-label', lang === 'ar' ? 
             }
             document.getElementById('cart-list').innerHTML = html;
         }
-        window.removeCartItem = function(idx) {
+        window.removeCartItem = function (idx) {
             cart.splice(idx, 1);
             renderCart();
         };
