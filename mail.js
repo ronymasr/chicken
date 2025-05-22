@@ -1,25 +1,51 @@
-function sendmail() {
-  var name = document.getElementById("name").value;
-  var phoneNumber = document.getElementById("PhoneNumber").value;
-  var flatNo = document.getElementById("FlatNo").value;
-  var buildingNo = document.getElementById("BuildingNo").value;
-  var streetName = document.getElementById("StreetName").value;
-  var compoundName = document.getElementById("CompoundName").value;
-  var areaName = document.getElementById("AreaName").value;
-  var nearestBranch = document.getElementById("NearestBranch").value;
-  if (name === "" || phoneNumber === "" || flatNo === "" || buildingNo === "" || streetName === "" || compoundName === "" || areaName === "" || nearestBranch === "") {
-    alert("Please fill in all fields.");
+function sendemail() {
+  const data = {
+    to_email: "ahmedramadan3331@gmail.com",
+    from_name: document.getElementById("join-name").value,
+    from_email: "ahmedramadan3331@gmail.com",
+    title: "Join Us",
+    message: "Hello, I would like to join the ranch. Here are my details:\n\n" +
+      ` Name :  ${document.getElementById("join-name").value}
+      Phone : ${document.getElementById("join-phone").value}
+      Flat : ${document.getElementById("join-flat").value}
+      Building : ${document.getElementById("join-building").value}
+      Street : ${document.getElementById("join-street").value}
+      Compound : ${document.getElementById("join-compound").value}
+      Area : ${document.getElementById("join-area").value}
+      Branch : ${document.getElementById("join-branch").value}
+      `,
+  };
+
+  const requiredFields = [
+    "join-name",
+    "join-phone",
+    "join-flat",
+    "join-building",
+    "join-street",
+    "join-compound",
+    "join-area",
+    "join-branch",
+  ];
+
+  const isAllFieldsFilled = requiredFields.every(
+    (field) => document.getElementById(field).value !== ""
+  );
+
+  if (!isAllFieldsFilled) {
+    alert("Please fill in all the required fields");
     return;
   }
 
-  Emailjs.send ("service_v78s6q8", "template_x5cqtzl", {
+  Emailjs.send("service_v78s6q8", "template_x5cqtzl", data);
+}
 
-    from_name: name,
-    phone_number: phoneNumber,
-    flat_no: flatNo,
-    building_no: buildingNo,
-    street_name: streetName,
-    compound_name: compoundName,
-    area_name: areaName,
-    nearest_branch: nearestBranch
-  })
+document.getElementById("join-submit").addEventListener("click", sendemail);
+Emailjs.send("service_v78s6q8", "template_x5cqtzl", data)
+  .then(function(response) {
+    console.log("SUCCESS!", response.status, response.text);
+    alert("Your request has been sent successfully!");
+  }, function(error) {
+    console.log("FAILED...", error);
+    alert("There was an error sending your request. Please try again.");
+  });
+

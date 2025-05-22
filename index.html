@@ -2,19 +2,32 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
+    
     <meta charset="UTF-8">
+
     <title>Chicken Ranch</title>
-    <meta name="description" content="About the restaurant">
+    <meta name="author" content="Ahmed Ramadan">
+    <meta name="description" content="Fried chicken restaurant">
     <meta name="Developer" content="Ahmed Ramadan">
+
     <meta name="keywords" content="restaurant,Fried chicken">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="theme-color" content="#b9314f">
+
     <link rel="icon"
         href="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/413894034_809647947842216_5543911497635866413_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=dw3tMcwsP5IQ7kNvwFUf4MC&_nc_oc=Adm3yFjCk_-7MxBWDg57hNXw0SMahN8Z94JJMdjWLHFhGAndZ-wrcph522MuS4GuDXw&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=Jt35ZCsk4VkD9Z4jf-lf0Q&oh=00_AfLsoqVlKgxTA0GOqZ_eAX4oiZnKAjEYQehch5Y44jrU3Q&oe=682D690B"
         type="image/x-icon">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
+
         /* Loader styles */
         #loader {
             position: fixed;
@@ -28,11 +41,16 @@
             align-items: center;
             justify-content: center;
             transition: opacity 0.5s;
+            opacity: 1;
+            pointer-events: all;
+
         }
 
         #loader.hide {
             opacity: 0;
             pointer-events: none;
+            transition: opacity 0.5s;
+
         }
 
         .spinner {
@@ -42,11 +60,15 @@
             width: 60px;
             height: 60px;
             animation: spin 1s linear infinite;
+            box-shadow: 0 2px 8px #0002;
+
         }
 
         @keyframes spin {
             100% {
                 transform: rotate(360deg);
+                box-shadow: 0 2px 8px #0002;
+
             }
         }
 
@@ -59,6 +81,8 @@
             margin-bottom: 28px;
             border: 1.5px solid #e2b9b3;
             transition: background 0.5s, box-shadow 0.5s;
+         
+            
         }
 
         .section-bubble.visible {
@@ -129,6 +153,7 @@
             margin: 0;
             padding: 0;
             transition: background 0.5s, color 0.5s;
+
         }
 
         body.dark-mode {
@@ -616,7 +641,6 @@
             color: #e3e3e3;
         }
     </style>
-   <script src="Mail.js" type="text/javascript"></script>
 <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 </script>
@@ -632,9 +656,16 @@
 
 <body>
     <!-- Loader -->
-    <div id="loader">
-        <div class="spinner"></div>
+    <div id="loader" style="display:flex;align-items:center;justify-content:center;">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+
+        </div>
+        <span>Loading...</span>
+
     </div>
+
 
     <div class="container">
         <img class="img-fade" loading="lazy"
@@ -645,17 +676,23 @@
             src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/495188688_1169630371843970_909718641186209204_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=c9Y-pA31t9sQ7kNvwFcMRMz&_nc_oc=AdltqroW7u1CQANliojY9OsoX_R_1kWyQvx0hDBUhhGfnyroGEI6n6qoSIGeExVHMqk&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=1XuBH3CYNE2Jn2VYu-lVwA&oh=00_AfLCycXqR1Eyz9_ZP_iiSXhISWg1dC_0P_boAC0TvcrTIg&oe=68339F05"
             width="350" alt="Fried chicken meal">
         <br>
+
         <img class="img-fade" loading="lazy"
             src="https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/494039910_1169630401843967_8765505607506402736_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=BELL--WHddIQ7kNvwFv88Qj&_nc_oc=AdnyfHb7F2ipm4RTP7NUrsaB_jdrLURqCYs1DpRNrD7J2OuzPx-DqTtYwqq2_9dBWDM&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=R9URgV3eJe8BFRUcXQxsCg&oh=00_AfJ9O9911fjLcyvWCKEurI-NqPnuM78X7TcPjup_y_Z6AA&oe=6833A926"
-            width="350" alt="Chicken Ranch restaurant branch">
+            width="350" alt="Chicken Ranch restaurant menu">
+        <br>
+
 
         <h1><u>Chicken Ranch</u></h1>
+
         <hr />
 
         <div class="section-bubble">
             <h2>1- Who are we? <span class="icon"><i class="fa-solid fa-user-tie"></i></span></h2>
             <p>We are a fast food restaurant serving fried chicken and sandwiches.</p>
+            
         </div>
+        
 
         <div class="section-bubble">
             <h2>2- Why us?<span class="icon"><i class="fa-solid fa-star"></i></span></h2>
@@ -666,6 +703,7 @@
                 We care very much about cleanliness and preserving the safety of the customer.
             </p>
         </div>
+        
 
         <div class="section-bubble">
             <h2>3- Our branches:<span class="icon"><i class="fa-solid fa-location-dot"></i></span></h2>
@@ -695,6 +733,7 @@
                 <p><a href="https://www.instagram.com/chickenranch.eg" target="_blank">Click here</a></p>
             </ul>
         </div>
+
 
         <div>
             <h3>ملاحظات : الجزء السفلي لا يعمل. مازال تحت الانشاء. شكرا لزيارتكم. </h3>
@@ -747,6 +786,7 @@
             </form>
             <div id="join-toast" class="join-toast"></div>
         </div>
+
 
         <!-- فقاعه اطلب الآن -->
         <div class="section-bubble" id="order-now-bubble">
@@ -810,13 +850,12 @@
             <div id="order-toast" class="join-toast"></div>
         </div>
 
-        <div class="section-bubble">
-            <h6>Developed by <a href="https://ronymasr.github.io/my-link/" target="_blank">Ahmed Ramadan</a>
-            </h6>
-        </div>
+
+      
 
 
     </div> <!-- نهاية .container -->
+    
 
     <!-- زر العودة للأعلى -->
     <button id="backToTop" title="Back to top">
@@ -829,24 +868,24 @@
     </button>
     <!-- زر تكبير الخط -->
     <button id="fontPlus"
-        style="position:fixed;top:18px;right:18px;z-index=3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
+        style="position:fixed;top:18px;right:18px;z-index:3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
         <i class="fa-solid fa-a"></i>
     </button>
     <!-- زر تغيير اللغة -->
     <button id="langSwitch"
-        style="position:fixed;top:18px;left:70px;z-index=3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.1rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
+        style="position:fixed;top:18px;left:70px;z-index:3001;background:#fff0f3;color:#7b112c;border:none;border-radius:50%;width:44px;height:44px;font-size:1.1rem;cursor:pointer;box-shadow:0 2px 8px #7b112c22;">
         <i class="fa-solid fa-language"></i>
     </button>
 
     <!-- Lightbox overlay -->
     <div id="lightbox-overlay"
-        style="display:none; position:fixed; z-index=3000; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); align-items:center; justify-content:center;">
+        style="display:none; position:fixed; z-index:3000; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); align-items:center; justify-content:center;">
         <img id="lightbox-img" src="" alt="Preview"
             style="max-width:90vw; max-height:90vh; border-radius:18px; box-shadow:0 8px 32px #000a;">
     </div>
 
     <div id="scroll-progress"
-        style="position:fixed;top:0;left:0;height:5px;width:0;background:#b9314f;z-index=3002;transition:width 0.2s;">
+        style="position:fixed;top:0;left:0;height:5px;width:0;background:#b9314f;z-index: 3002;transition:width 0.2s;">
     </div>
 
     <!-- زر مشاركة عائم -->
@@ -1004,7 +1043,7 @@
                 facebook: "Facebook page:",
                 instagram: "Instagram page:",
                 click: "Click here",
-                copyright: "Copyright 2025 Ahmed Ramadan. All rights reserved."
+                copyright: "Copyright 2025 Chicken Ranch. All rights reserved."
             },
             ar: {
                 title: "تشيكن رانش",
@@ -1023,7 +1062,7 @@
                 facebook: "صفحة فيسبوك:",
                 instagram: "صفحة انستجرام:",
                 click: "اضغط هنا",
-                copyright: "جميع الحقوق محفوظة © 2025 أحمد رمضان"
+                copyright: "جميع الحقوق محفوظة © 2025 تشيكن رانش"
             }
         };
 
@@ -1452,21 +1491,47 @@
         });
     </script>
     <footer>
-        <p>Copyright 2025 Ahmed Ramadan. All rights reserved.</p>
+        <p>© 2025 Chicken Ranch. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/RONYMASRvvv" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/24h_.__" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/201090833092" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+
+        </div>
+        <div class="footer-links">
+            
+        <p>Website by <a href="https://ronymasr.github.io/my-link/" target="_blank">Ahmed Ramadan</a></p>
+        <h6>All rights reserved © 2025</h6>
+        
     </footer>
+    
+
     <!-- رسالة الترحيب -->
     <div id="welcome-msg"
         style="position:fixed;top:70px;right:20px;z-index:4000;background:#fff0f3;color:#7b112c;padding:12px 22px;border-radius:12px;box-shadow:0 2px 8px #b9314f22;display:none;">
         Welcome to Chicken Ranch!
+        
     </div>
+
     <script>
+
         window.addEventListener('DOMContentLoaded', function () {
             const msg = document.getElementById('welcome-msg');
             msg.style.display = 'block';
             setTimeout(() => { msg.style.display = 'none'; }, 3500);
+            
         });
     </script>
+
+    <script src="mail.js"></script>
+
+    
 </body>
 
+
+
+
+
 </html>
-<!-- نهاية الكود -->
+<!-- نهاية الصفحة -->
+
